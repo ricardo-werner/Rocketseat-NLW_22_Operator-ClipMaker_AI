@@ -1,0 +1,40 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.skip-link {
+	position: absolute;
+	top: -48px;
+	left: 16px;
+	z-index: 1000;
+	padding: 8px 12px;
+	border-radius: 8px;
+	background: #111;
+	color: #fff;
+	text-decoration: none;
+	transition: top 0.2s ease;
+}
+
+.skip-link:focus-visible {
+	top: 12px;
+	outline: 3px solid #4f46e5;
+	outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline: 3px solid #4f46e5;
+	outline-offset: 2px;
+}

@@ -21,9 +21,11 @@
 </head>
 
 <body>
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
   <header class="main-header">
     <div class="header-content">
-      <a href="/" class="logo-link" aria-label="ClipMaker AI - Home"> 
+      <a href="/" class="logo-link" aria-label="ClipMaker AI - Página inicial"> 
         <img src="./src/images/logo.png" alt="Logo do ClipMaker AI" class="logo-img">
       </a>
 
@@ -43,11 +45,12 @@
   </header>
 
   <div>
-    <aside>
+    <aside id="cortes-salvos" aria-label="Meus cortes salvos">
   
     </aside>
 
-    <main>
+    <main id="conteudo-principal" tabindex="-1" aria-label="Ferramenta de edição">
+      <section id="ferramenta" aria-label="Ferramenta"></section>
   
     </main>
   </div>
@@ -56,7 +59,7 @@
   </footer>
 
   <button id="back-to-top" title="Voltar ao topo" aria-label="Voltar ao topo da página">
-    <img src="./src/icons/up-arrow-bg.png" width="30px" height="30px" alt="Ícone de seta para cima">
+    <img src="./src/icons/up-arrow-bg.png" width="30px" height="30px" alt="" aria-hidden="true">
   </button>
 
   <script src="./src/scripts/scripts.js"></script>
