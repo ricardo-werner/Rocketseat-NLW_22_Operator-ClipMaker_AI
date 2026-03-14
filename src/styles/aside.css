@@ -1,0 +1,57 @@
+.sidebar {
+  with: 28rem;
+  padding: 4rem 2rem;
+  background-color: var(---surface-color);
+  border-right: 1px solid var(--border-color);
+  height: calc(100vh-8rem);
+  position: sticky;
+  top: 8rem;
+}
+
+.sidebar h3 {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.acc-group {
+  margin-bottom: 2.5rem;
+}
+
+.acc-group label {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.vision {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.btn-acc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 15rem;
+  padding: 1rem 2rem;
+  background-color: #007BFF;
+  border: none;
+  color: var(--text-primary);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-acc:hover {
+  background-color: #0056b3;
+}
+
+.btn-label {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
