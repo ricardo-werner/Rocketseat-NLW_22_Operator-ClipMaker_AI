@@ -169,6 +169,41 @@
           </div>
         </section>
 
+        <section id="preview-section" class="preview-section">
+          <h2>Video Processado</h2>
+
+          <div class="player-wrapper">
+            <video id="main-video-player" controls preload="metadata">
+              <source src="" type="video/mp4" />
+              Seu navegador não suporta a tag de vídeo.
+            </video>
+
+            <div class="video-placeholder" id="video-placeholder">
+              <span class="icon">
+                &#127916;
+              </span>
+              <p>O resultado da IA aparecerá aqui</p>
+            </div>
+          </div>
+
+          <div class="preview-actions">
+            <button id="btn-save-cut" class="btn-action-preview save" aria-label="Salvar corte na galeria">
+              <span class="icon">
+                &#x1F4BE;
+              </span>
+              <p>Salvar na Galeria</p>
+            </button>
+
+            <button id="btn-discard-cut" class="btn-action-preview discard" aria-label="Descartar este corte">
+              <span class="icon">
+                &#x1F5D1;
+              </span>
+              <p>Descartar</p>
+            </button>
+
+          </div>
+        </section>
+
         <section id="cortes-salvos" class="cuts-section">
           <h2>Meus Cortes Salvos</h2>
           <div id="lista-salvos" class="cuts-grid">
