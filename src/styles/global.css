@@ -1,40 +1,51 @@
-* {
-	box-sizing: border-box;
+:root {
+	--bg-color: #050505;
+	--surface-color: #121212;
+	--primary-color: #00A3E0;
+	--focus-color: #FF8700;
+	--text-primary: #FFFFFF;
+	--text-secondary: #A7A9AC;
+	--border-color: #333333;
 }
 
-html {
-	scroll-behavior: smooth;
+.light-theme {
+	--bg-color: #F5F5F5;
+	--surface-color: #FFFFFF;
+	--text-primary: #101010;
+	--text-secondary: #4A4A4A;
+	--border-color: #CCCCCC;
 }
 
 body {
-	margin: 0;
-	font-family: "Lexend", system-ui, -apple-system, "Segoe UI", sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-primary);
+	font-family: 'Inter', sans-serif;
+	font-size: 1.6rem;
+	transition: all 0.3s ease;
 }
 
-.skip-link {
-	position: absolute;
-	top: -48px;
-	left: 16px;
-	z-index: 1000;
-	padding: 8px 12px;
-	border-radius: 8px;
-	background: #111;
-	color: #fff;
-	text-decoration: none;
-	transition: top 0.2s ease;
+body.dyslexia-mode {
+	font-family: 'Lexend', 'Open Sans',sans-serif; !important;
+	letter-spacing: 0.1rem;
 }
 
-.skip-link:focus-visible {
-	top: 12px;
-	outline: 3px solid #4f46e5;
-	outline-offset: 2px;
+:focus-visible {
+	outline: 3px solid var(--focus-color);
+	outline-offset: 0.2rem;
 }
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-	outline: 3px solid #4f46e5;
-	outline-offset: 2px;
+body.high-contrast-mode {
+	font-family: 'Atkinson Hyperlegible', sans-serif; !important;
+	--bg-color: #000000;
+	--surface-color: #000000;
+	--text-primary: #FFFF00;
+	--text-secondary: #FFFFFF;
+	--border-color: #FFFFFF;
+	--focus-color: #00ff00;
+}
+
+body.high-contrast-mode .cut-card {
+	background: #0000;
+	backdrop-filter: none;
+	border: 2px solid #FFFF;
 }
