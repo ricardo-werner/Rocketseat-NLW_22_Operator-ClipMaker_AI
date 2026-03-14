@@ -1,68 +1,145 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ClipMaker AI - Edição inteligente de vídeos com IA e Cloudinary">
-  <title>ClipMaker AI - Next-Gen Accessible Vídeo</title>
+  <head>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
 
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="ClipMaker AI - Edição inteligente de vídeos com IA e Cloudinary"
+    />
+    <title>ClipMaker AI - Next-Gen Accessible Vídeo</title>
 
-  <link rel="stylesheet" href="./src/styles/index.css">
-  <script>
-    if (localStorage.getItem("theme") === 'light') {
-      document.documentElement.classList.add("light");
-    }
-  </script>
-  
-</head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
-  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+    <link rel="stylesheet" href="./src/styles/index.css" />
+    <script>
+      if (localStorage.getItem('theme') === 'light') {
+        document.documentElement.classList.add('light');
+      }
+    </script>
+  </head>
 
-  <header class="main-header">
-    <div class="header-content">
-      <a href="/" class="logo-link" aria-label="ClipMaker AI - Página inicial"> 
-        <img src="./src/images/logo.png" alt="Logo do ClipMaker AI" class="logo-img">
-      </a>
+  <body>
+    <a href="#conteudo-principal" class="skip-link"
+      >Pular para o conteúdo principal</a
+    >
 
-      <nav class="header-nav" aria-label="Navegação Principal"
+    <header class="main-header">
+      <div class="header-content">
+        <a
+          href="/"
+          class="logo-link"
+          aria-label="ClipMaker AI - Página inicial"
+        >
+          <img
+            src="./src/images/Clipmaker_ia_logo.jpeg"
+            alt="Logo do ClipMaker AI"
+            class="Imagem do logo do aplicativo, fundo preto, ao centro uma bola estilizada com o icone de start , abaixo um título e no rodapé os ícones de acessibilidade e de pessoas com deficiência auditiva e de pessoa com deficiência visual"
+            width="150px"
+            height="85px"
+          />
+        </a>
+
+        <nav
+          class="header-nav"
+          aria-label="Navegação Principal"
+        >
+          <ul>
+            <li>
+              <a href="#ferramenta">Ferramenta</a>
+            </li>
+
+            <li>
+              <a href="#cortes-salvos">Meus Cortes</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="app-container">
+      <aside class="sidebar" aria-labelledby="a11y-title">
+        <h3 id="a11y-title" class="sidebar-title">
+          Acessibilidade
+        </h3>
+
+        <div class="a11y-group">
+          <label> Interface: </label>
+          <button
+            id="theme-toggle"
+            class="btn-a11y"
+            aria-label="Alternar tema claro e escuro"
+          >
+            <img
+              src="./src/icons/day-and-night.png"
+              width="20px"
+              height="20px"
+              alt=""
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+
+        <div class="a11y-group">
+          <label>
+            Leitura:
+          </label>
+          <button onclick="toggleDislexia()" class="btn-a11y" aria-label="Ativar ou desativar fonte para dislexia">
+            <img
+              src="./src/icons/dislexia.png"
+              width="20px"
+              height="20px"
+              alt="botão para ativar ou desativar fonte para dislexia"
+              aria-hidden="true"
+            />
+        </div>
+
+      </aside>
+
+      <main
+        id="conteudo-principal"
+        tabindex="-1"
+        aria-label="Ferramenta de edição"
       >
-        <ul>
-          <li>
-            <a href="#ferramenta">Ferramenta</a>
-          </li>
-
-          <li>
-            <a href="#cortes-salvos">Meus Cortes</a>
-          </li>
-        </ul>
-      </nav>
+        <section
+          id="ferramenta"
+          aria-label="Ferramenta"
+        ></section>
+      </main>
     </div>
-  </header>
 
-  <div>
-    <aside id="cortes-salvos" aria-label="Meus cortes salvos">
-  
-    </aside>
+    <footer></footer>
 
-    <main id="conteudo-principal" tabindex="-1" aria-label="Ferramenta de edição">
-      <section id="ferramenta" aria-label="Ferramenta"></section>
-  
-    </main>
-  </div>
+    <button
+      id="back-to-top"
+      title="Voltar ao topo"
+      aria-label="Voltar ao topo da página"
+    >
+      <img
+        src="./src/icons/up-arrow-bg.png"
+        width="30px"
+        height="30px"
+        alt=""
+        aria-hidden="true"
+      />
+    </button>
 
-  <footer>
-  </footer>
-
-  <button id="back-to-top" title="Voltar ao topo" aria-label="Voltar ao topo da página">
-    <img src="./src/icons/up-arrow-bg.png" width="30px" height="30px" alt="" aria-hidden="true">
-  </button>
-
-  <script src="./src/scripts/scripts.js"></script>
-  
-</body>
+    <script src="./src/scripts/scripts.js"></script>
+  </body>
 </html>
