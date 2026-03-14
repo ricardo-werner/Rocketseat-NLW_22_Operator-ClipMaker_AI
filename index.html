@@ -172,7 +172,20 @@
       </main>
     </div>
 
-    <footer></footer>
+    <footer class="main-footer">
+      <p class="copyright">
+        &copy; Copyright <span id="year-footer"></span> - Ricardo Werner <BR>
+        <small>
+          Desenvolvedor Front-End com foco em Acessibilidade (A11Y/WCAG) | Desenvolvido para Inclusão Digital
+        </small>
+      </p>
+
+      <script>
+        const date = new Date();
+        document.getElementById('year-footer').textContent = date.getFullYear();
+      </script>
+
+    </footer>
 
     <button
       id="back-to-top"
