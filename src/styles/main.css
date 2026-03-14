@@ -87,8 +87,6 @@ input[type="password"]::placeholder {
   right: 4rem;
   width: 6rem;
   height: 6rem;
-  border-radius: 50%;
-  background: var(--primary-color);
   color: #FFF;
   opacity: 0;
   visibility: hidden;
