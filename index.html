@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <link
@@ -74,12 +74,12 @@
     </header>
 
     <div class="app-container">
-      <aside class="sidebar" aria-labelledby="a11y-title">
-        <h3 id="a11y-title" class="sidebar-title">
+      <aside class="sidebar" aria-labelledby="acc-title">
+        <h3 id="acc-title" class="sidebar-title">
           Acessibilidade
         </h3>
 
-        <div class="a11y-group">
+        <div class="acc-group">
           <label> Interface: </label>
           <button
             id="theme-toggle"
@@ -96,11 +96,11 @@
           </button>
         </div>
 
-        <div class="a11y-group">
+        <div class="acc-group">
           <label>
             Leitura:
           </label>
-          <button onclick="toggleDislexia()" class="btn-a11y" aria-label="Ativar ou desativar fonte para dislexia">
+          <button onclick="toggleDislexia()" class="btn-acc" aria-label="Ativar ou desativar fonte para dislexia">
             <img
               src="./src/icons/dislexia.png"
               width="20px"
@@ -108,8 +108,18 @@
               alt="botão para ativar ou desativar fonte para dislexia"
               aria-hidden="true"
             />
-        </div>
+          </button>
 
+          <button onclick="toggleTypography()" class="btn-acc" aria-label="Ativar ou desativar fonte para dislexia">
+            <img
+              src="./src/icons/typography.png"
+              width="20px"
+              height="20px"
+              alt="botão para ativar ou desativar aumento da fonte para melhor leitura"
+              aria-hidden="true"
+            />
+          </button>
+        </div>
       </aside>
 
       <main
