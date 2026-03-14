@@ -22,10 +22,7 @@
     />
     <title>ClipMaker AI - Next-Gen Accessible Vídeo</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./src/styles/index.css" />
     <script>
@@ -83,7 +80,7 @@
           <label> Interface: </label>
           <button
             id="theme-toggle"
-            class="btn-a11y"
+            class="btn-acc"
             aria-label="Alternar tema claro e escuro"
           >
             <img
@@ -93,11 +90,14 @@
               alt=""
               aria-hidden="true"
             />
+            <span class="btn-label" aria-hidden="true">
+              Dia / Noite
+            </span>
           </button>
         </div>
 
-        <div class="acc-group">
-          <label> Leitura: </label>
+        <div class="acc-group vision">
+          <label> Leitura e Visão: </label>
           <button
             onclick="toggleDislexia()"
             class="btn-acc"
@@ -110,12 +110,15 @@
               alt="botão para ativar ou desativar fonte para dislexia"
               aria-hidden="true"
             />
+            <span class="btn-label" aria-hidden="true">
+              Dislexia
+            </span>
           </button>
 
           <button
-            onclick="toggleTypography()"
+            onclick="toggleEnhancedVision()"
             class="btn-acc"
-            aria-label="Ativar ou desativar fonte para dislexia"
+            aria-label="Ativar Modo de Alta Legibilidade"
           >
             <img
               src="./src/icons/typography.png"
@@ -124,6 +127,9 @@
               alt="botão para ativar ou desativar aumento da fonte para melhor leitura"
               aria-hidden="true"
             />
+            <span class="btn-label" aria-hidden="true">
+              Aumentar Fonte
+            </span>
           </button>
         </div>
       </aside>
