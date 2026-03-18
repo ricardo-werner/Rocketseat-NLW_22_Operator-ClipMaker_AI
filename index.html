@@ -1,28 +1,17 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <meta
-      name="description"
-      content="ClipMaker AI - Edição inteligente de vídeos com IA e Cloudinary"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ClipMaker AI - Edição inteligente de vídeos com IA e Cloudinary" />
     <title>ClipMaker AI - Next-Gen Accessible Vídeo</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <link rel="stylesheet" href="./src/styles/index.css" />
     <script>
@@ -33,136 +22,62 @@
   </head>
 
   <body>
-    <a href="#conteudo-principal" class="skip-link"
-      >Pular para o conteúdo principal</a
-    >
+    <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
 
-    <header class="main-header">
+    <header class="main-header animate-fade-in">
       <div class="header-content">
-        <a
-          href="/"
-          class="logo-link"
-          aria-label="ClipMaker AI - Página inicial"
-        >
-          <img
-            src="./src/images/Clipmaker_ia_logo.jpeg"
-            alt="Logo do ClipMaker AI"
-            class="Imagem do logo do aplicativo, fundo preto, ao centro uma bola estilizada com o icone de start , abaixo um título e no rodapé os ícones de acessibilidade e de pessoas com deficiência auditiva e de pessoa com deficiência visual"
-            width="150px"
-            height="85px"
-          />
+        <a href="/" class="logo-link" aria-label="ClipMaker AI - Página inicial">
+          <img src="./src/images/Clipmaker_ia_logo.jpeg" alt="Logo do ClipMaker AI" class="logo-image" width="150" height="85" />
         </a>
 
-        <nav
-          class="header-nav"
-          aria-label="Navegação Principal"
-        >
+        <nav class="header-nav" aria-label="Navegação Principal">
           <ul>
-            <li>
-              <a href="#ferramenta">Ferramenta</a>
-            </li>
-
-            <li>
-              <a href="#cortes-salvos">Meus Cortes</a>
-            </li>
+            <li><a href="#ferramenta">Ferramenta</a></li>
+            <li><a href="#cortes-salvos">Meus Cortes</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
     <div class="app-container">
-      <aside class="sidebar" aria-labelledby="acc-title">
-        <h3 id="acc-title" class="sidebar-title">
-          Acessibilidade
-        </h3>
+      <aside class="sidebar animate-slide-right" aria-labelledby="acc-title">
+        <h3 id="acc-title" class="sidebar-title">Acessibilidade</h3>
 
         <div class="acc-group">
           <label> Interface: </label>
-          <button
-            id="theme-toggle"
-            class="btn-acc"
-            aria-label="Alternar tema claro e escuro"
-          >
-            <img
-              src="./src/icons/day-and-night.png"
-              width="20px"
-              height="20px"
-              alt=""
-              aria-hidden="true"
-            />
-            <span class="btn-label" aria-hidden="true">
-              Dia / Noite
-            </span>
+          <button id="theme-toggle" class="btn-acc" aria-label="Alternar tema claro e escuro">
+            <i data-lucide="moon" class="icon" aria-hidden="true"></i>
+            <span class="btn-label" aria-hidden="true">Dia / Noite</span>
           </button>
         </div>
 
         <div class="acc-group vision">
           <label> Leitura e Visão: </label>
-          <button
-            onclick="toggleDislexia()"
-            class="btn-acc"
-            aria-label="Ativar ou desativar fonte para dislexia"
-          >
-            <img
-              src="./src/icons/dislexia.png"
-              width="20px"
-              height="20px"
-              alt="botão para ativar ou desativar fonte para dislexia"
-              aria-hidden="true"
-            />
-            <span class="btn-label" aria-hidden="true">
-              Dislexia
-            </span>
+          <button onclick="toggleDislexia()" class="btn-acc" aria-label="Ativar ou desativar fonte para dislexia">
+            <i data-lucide="type" class="icon" aria-hidden="true"></i>
+            <span class="btn-label" aria-hidden="true">Dislexia</span>
           </button>
 
-          <button
-            onclick="toggleEnhancedVision()"
-            class="btn-acc"
-            aria-label="Ativar Modo de Alta Legibilidade"
-          >
-            <img
-              src="./src/icons/typography.png"
-              width="20px"
-              height="20px"
-              alt="botão para ativar ou desativar aumento da fonte para melhor leitura"
-              aria-hidden="true"
-            />
-            <span class="btn-label" aria-hidden="true">
-              Aumentar Fonte
-            </span>
+          <button onclick="toggleEnhancedVision()" class="btn-acc" aria-label="Ativar Modo de Alta Legibilidade">
+            <i data-lucide="zoom-in" class="icon" aria-hidden="true"></i>
+            <span class="btn-label" aria-hidden="true">Aumentar Fonte</span>
           </button>
         </div>
       </aside>
 
-      <main id="main-content">
-        <section
-          id="ferramenta"
-          class="hero"
-          aria-label="Ferramenta"
-        >
-          <h1>
-            Transforme videos com Inteligência Artificial
-          </h1>
-          <p>
-            Insira sua chave e comece a criar cortes virais
-            em segundos, tudo com a ajuda da IA e do poder
-            da Cloudinary.
-          </p>
+      <main id="conteudo-principal" class="main-content animate-fade-up">
+        <section id="ferramenta" class="hero" aria-label="Ferramenta">
+          <h1>Transforme videos com Inteligência Artificial</h1>
+          <p>Insira sua chave e comece a criar cortes virais em segundos, tudo com a ajuda da IA e do poder da Cloudinary.</p>
 
           <div class="input-group">
-            <label for="api-key"
-              >Sua Google AI API Key:</label
-            >
-            <input
-              type="password"
-              id="api-key"
-              name="api-key"
-              placeholder=".........."
-            />
+            <label for="api-key">Sua Google AI API Key:</label>
+            <input type="password" id="api-key" name="api-key" placeholder="••••••••••" />
           </div>
 
           <div class="upload-area">
             <button id="upload-btn" class="btn-primary">
+              <i data-lucide="upload-cloud" aria-hidden="true" style="margin-right: 8px;"></i>
               Começar Upload
             </button>
             <p id="status-text">Pronto para processar</p>
@@ -179,69 +94,51 @@
             </video>
 
             <div class="video-placeholder" id="video-placeholder">
-              <span class="icon">
-                &#127916;
-              </span>
+              <i data-lucide="video" class="placeholder-icon" aria-hidden="true"></i>
               <p>O resultado da IA aparecerá aqui</p>
             </div>
           </div>
 
           <div class="preview-actions">
             <button id="btn-save-cut" class="btn-action-preview save" aria-label="Salvar corte na galeria">
-              <span class="icon">
-                &#x1F4BE;
-              </span>
-              <p>Salvar na Galeria</p>
+              <i data-lucide="save" aria-hidden="true"></i>
+              <span>Salvar na Galeria</span>
             </button>
 
             <button id="btn-discard-cut" class="btn-action-preview discard" aria-label="Descartar este corte">
-              <span class="icon">
-                &#x1F5D1;
-              </span>
-              <p>Descartar</p>
+              <i data-lucide="trash-2" aria-hidden="true"></i>
+              <span>Descartar</span>
             </button>
-
           </div>
         </section>
 
         <section id="cortes-salvos" class="cuts-section">
           <h2>Meus Cortes Salvos</h2>
           <div id="lista-salvos" class="cuts-grid">
-            <!-- Cortes salvos aparecerão aqui -->
-          </div>
+            </div>
         </section>
       </main>
     </div>
 
     <footer class="main-footer">
       <p class="copyright">
-        &copy; Copyright <span id="year-footer"></span> - Ricardo Werner <BR>
-        <small>
-          Desenvolvedor Front-End com foco em Acessibilidade (A11Y/WCAG) | Desenvolvido para Inclusão Digital
-        </small>
+        &copy; Copyright <span id="year-footer"></span> - Ricardo Werner <br>
+        <small>Desenvolvedor Front-End com foco em Acessibilidade (A11Y/WCAG) | Desenvolvido para Inclusão Digital</small>
       </p>
-
       <script>
         const date = new Date();
         document.getElementById('year-footer').textContent = date.getFullYear();
       </script>
-
     </footer>
 
-    <button
-      id="back-to-top"
-      title="Voltar ao topo"
-      aria-label="Voltar ao topo da página"
-    >
-      <img
-        src="./src/icons/up-arrow-bg.png"
-        width="30px"
-        height="30px"
-        alt=""
-        aria-hidden="true"
-      />
+    <button id="back-to-top" title="Voltar ao topo" aria-label="Voltar ao topo da página">
+      <i data-lucide="arrow-up" aria-hidden="true"></i>
     </button>
 
     <script src="./src/scripts/scripts.js"></script>
+    
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>
