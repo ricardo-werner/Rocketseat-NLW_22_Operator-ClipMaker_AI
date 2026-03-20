@@ -1,0 +1,13 @@
+[
+  {
+    "id": "f1-static-001",
+    "titulo": "Corte F1 - Pilotos e Baterias",
+    "urlVideo": "./src/assets/video_f1.mp4",
+    "status": "enabled",
+    "data": "18/03/2026",
+    "legendas": [
+      { "start": 0, "end": 2, "text": "PILOTOS APONTARAM QUE VÁRIAS" },
+      { "start": 2, "end": 4, "text": "DISPUTAS FORAM DEFINIDAS..." }
+    ]
+  }
+]
