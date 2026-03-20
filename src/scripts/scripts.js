@@ -14,7 +14,12 @@ function toggleDislexia() {
 }
 
 function toggleEnhancedVision() {
-  const main = document.getElementById('main-content');
+  const main =
+    document.getElementById('conteudo-principal') ||
+    document.querySelector('.main-content');
+
+  if (!main) return;
+
   main.style.lineHeight =
     main.style.lineHeight === '2' ? '1.5' : '2';
 }
