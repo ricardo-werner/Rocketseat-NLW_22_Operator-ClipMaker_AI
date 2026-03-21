@@ -173,7 +173,9 @@ const galeriaApp = {
   descartarVideo: function () {
     if (confirm('Deseja descartar as alterações atuais?')) {
       if (this.videoAtualId) {
-        this.alternarStatus(this.videoAtualId);
+        this.alternarStatus(this.videoAtualId, {
+          skipConfirm: true,
+        });
         return;
       }
 
@@ -195,7 +197,9 @@ const galeriaApp = {
     }
   },
 
-  alternarStatus: async function (id) {
+  alternarStatus: async function (id, options = {}) {
+    const { skipConfirm = false } = options;
+
     let galeria = JSON.parse(
       localStorage.getItem('clipmaker_galeria') || '[]'
     );
@@ -208,6 +212,14 @@ const galeriaApp = {
         galeria[index].status === 'disabled'
           ? 'disabled'
           : 'enabled';
+
+      if (statusAtual === 'enabled' && !skipConfirm) {
+        const confirmou = confirm(
+          'Deseja deletar (desativar) este vídeo da galeria?'
+        );
+
+        if (!confirmou) return;
+      }
 
       galeria[index].status =
         statusAtual === 'enabled' ? 'disabled' : 'enabled';
