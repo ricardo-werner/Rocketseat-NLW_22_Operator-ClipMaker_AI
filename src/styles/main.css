@@ -18,17 +18,24 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 4rem 2rem;
 }
 
 .hero h1 {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
   text-align: center;
+  letter-spacing: -0.5px;
 }
 
 .hero p {
+  font-size: 1.4rem;
+  opacity: 0.7;
   color: var(--text-secondary);
-  margin-bottom: 4rem;
+  margin: 2rem;
 }
 
 .hero h1 + p {
@@ -40,7 +47,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 0;
+  padding: 1.2rem 0;
+  border-radius: 0.8rem;
 }
 
 .hero .input-group label {
@@ -52,21 +60,19 @@
 input[type='password'] {
   width: 100%;
   max-width: 45rem;
-  passing: 1.5rem;
+  padding: 1rem;
   background: var(--surface-color);
-  border: 1px solid var(--border-color);
   border-radius: 0.8rem;
   color: var(--text-primary);
   transition: border-color 0.3s ease;
 }
 
 input[type='password']:focus {
-  border-color: var(--focus-color);
-  outline: none;
+  box-shadow: 0 0 0 2px rgba(14,165,233, 0.3);
 }
 
 input[type='password']::placeholder {
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 .status-text {
@@ -74,12 +80,34 @@ input[type='password']::placeholder {
 }
 
 .btn-primary {
-  background: var(--primary-color);
-  color: #fff;
-  padding: 1.5rem 4rem;
+  background: var(--btn-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  padding: 1.5rem 2.5rem;
+  margin-top: 1.5rem;
+  border: none;
   border-radius: 0.8rem;
-  font-weight: bold;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s ease;
+  
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(14,165,233, 0.3);
+}
+
+,.btn-primary .lucide {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+
+#status {
+  margin-top: 1rem;
+  font-size: 1.2rem;
 }
 
 #back-to-top {
@@ -107,159 +135,3 @@ input[type='password']::placeholder {
   visibility: visible;
 }
 
-/* Seção da Galeria */
-#cortes-salvos {
-  display: block;
-}
-
-/* Área da Galeria (container dos cards) */
-#lista-salvos,
-.cuts-grid {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(230px, 1fr)
-  );
-  gap: 2rem;
-  padding: 2rem 0;
-}
-
-/* Card Individual */
-.cut-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid #333;
-  border-radius: 8rem;
-  padding: 15px;
-  transition: all 0.3s ease;
-}
-
-/* Estado de Deletado (Disabled) */
-.corte-card.disabled-card {
-  opacity: 0.3;
-  filter: grayscale(1);
-}
-
-/* Botões da Galeria */
-.card-actions button {
-  cursor: pointer;
-  background: transparent;
-  border: 1px solid #ff8c00;
-  margin-right: 5px;
-  border-radius: 4px;
-}
-
-.galeria-grid {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(200px, 1fr)
-  );
-  gap: 1.5rem;
-  margin-top: 1rem;
-  align-items: start;
-}
-
-.cut-card {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 1.2rem;
-  padding: 1rem;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: 30rem;
-}
-
-/* Estado 'Deletado' solicitado */
-.cut-card.disabled-card {
-  opacity: 0.3;
-  filter: grayscale(1);
-  border-color: #550000;
-}
-
-.card-actions {
-  display: flex;
-  gap: 0.875rem;
-  border-radius: 1rem;
-}
-
-.btn-card {
-  flex: 1;
-  padding: 0.8rem 1.2rem;
-  cursor: pointer;
-  border-radius: 0.6rem;
-  border: 1px solid #ff8c00;
-  background: transparent;
-  color: white;
-}
-
-.btn-delete {
-  border-color: #ff4444;
-}
-
-.galeria-grid {
-  display: grid;
-  /* auto-fill: cria novas colunas automaticamente conforme o espaço */
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(200px, 1fr)
-  );
-  gap: 1.5rem;
-  padding: 1rem 0;
-}
-
-.cut-card {
-  background: #5c5555;
-  border: 1px solid #333;
-  border-radius: 8px;
-  overflow: hidden;
-  transition:
-    transform 0.2s,
-    opacity 0.3s;
-}
-
-/* Efeito para o status 'disabled' que você solicitou */
-.cut-card.disabled-card {
-  opacity: 0.3;
-  filter: grayscale(1);
-}
-
-.card-actions {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background: #222;
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.clapper-icon {
-  font-size: 1.5rem;
-}
-
-.card-info strong {
-  display: block;
-  color: #fff;
-}
-
-.card-info small {
-  color: #888;
-}
-
-.btn-card.is-disabled,
-.btn-card:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.empty-msg {
-  color: var(--text-secondary);
-  text-align: center;
-  padding: 1rem 0;
-}
