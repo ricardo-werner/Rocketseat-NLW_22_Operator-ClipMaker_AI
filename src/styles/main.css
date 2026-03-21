@@ -86,12 +86,20 @@ input[type='password']::placeholder {
   position: fixed;
   bottom: 4rem;
   right: 4rem;
-  width: 6rem;
-  height: 6rem;
   color: #2fd305;
   opacity: 0;
   visibility: hidden;
   transition: 0.4s;
+  cursor: pointer;
+}
+
+#back-to-top:hover {
+  color: #4af706;
+}
+
+#back-to-top > i {
+  width: 6rem;
+  height: 7rem;
 }
 
 #back-to-top.visible {
