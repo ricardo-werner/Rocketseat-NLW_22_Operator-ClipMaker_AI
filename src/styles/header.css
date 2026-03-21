@@ -1,4 +1,6 @@
 .main-header {
+  background: var(--bg-main);
+  backdrop-filter: blur(0.8rem);
   background-color: var(--surface-color);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
@@ -20,7 +22,7 @@
   transition: filter 0.3s ease;
 }
 
-.logo-img:hover .logo-img {
+.logo-img:hover {
   filter: drop-shadow(0 0 8px var(--primary-color));
 }
 
