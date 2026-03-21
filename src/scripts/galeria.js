@@ -11,6 +11,10 @@ const galeriaApp = {
   todosOsCortes: [],
   videoAtualId: null,
 
+  obterContainerGrid: function () {
+    return document.getElementById('lista-salvos');
+  },
+
   // Gera uma assinatura única para evitar duplicados por conteúdo
   gerarChaveVideo: function (video) {
     const legendas = Array.isArray(video?.legendas)
@@ -127,9 +131,7 @@ const galeriaApp = {
   },
 
   renderizarNoGrid: function (lista) {
-    const container = document.getElementById(
-      'meus-cortes-container'
-    );
+    const container = this.obterContainerGrid();
     if (!container) return;
 
     if (!lista || lista.length === 0) {
@@ -146,20 +148,19 @@ const galeriaApp = {
             : 'enabled';
 
         return `
-            <div class="corte-card ${statusAtual === 'disabled' ? 'disabled-card' : ''}" id="${video.id}">
-                <div class="card-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-                    <span class="clapper-icon" style="font-size: 1.5rem;">🎬</span> 
+            <div class="cut-card ${statusAtual === 'disabled' ? 'disabled-card' : ''}" id="${video.id}">
+                <div class="card-header">
+                    <span class="clapper-icon">🎬</span> 
                     <div class="card-info">
-                        <strong style="display: block; color: #fff;">${video.titulo}</strong>
-                        <small style="color: #888;">${video.data || '18/03/2026'}</small>
+                        <strong >${video.titulo}</strong>
+                        <small>${video.data || '18/03/2026'}</small>
                     </div>
                 </div>
-                <div class="card-actions" style="display: flex; gap: 8px;">
-                  <button class="btn-card" data-action="assistir" data-id="${video.id}" ${statusAtual === 'disabled' ? 'disabled' : ''} style="flex: 1; cursor: ${statusAtual === 'disabled' ? 'not-allowed' : 'pointer'}; opacity: ${statusAtual === 'disabled' ? '0.6' : '1'};">
+            <div class="card-actions">
+              <button class="btn-card ${statusAtual === 'disabled' ? 'is-disabled' : ''}" data-action="assistir" data-id="${video.id}" ${statusAtual === 'disabled' ? 'disabled' : ''}>
                         ▶️ Assistir
                     </button>
-                  <button class="btn-card btn-delete" data-action="alternar-status" data-id="${video.id}" 
-                            style="flex: 1; cursor: pointer; border-color: #ff4444;">
+              <button class="btn-card btn-delete" data-action="alternar-status" data-id="${video.id}">
                         ${statusAtual === 'enabled' ? '🗑️ Deletar' : '🔄 Restaurar'}
                     </button>
                 </div>
@@ -176,7 +177,9 @@ const galeriaApp = {
       } else {
         galleryItems.video.src = '';
         galleryCoreApp.customCaptions = [];
-        galleryItems.subtitleDisplay.textContent = '';
+        if (galleryItems.subtitleDisplay) {
+          galleryItems.subtitleDisplay.textContent = '';
+        }
         galleryItems.status.textContent =
           '🗑️ Conteúdo descartado.';
       }
@@ -270,9 +273,7 @@ const galeriaApp = {
   },
 
   registrarEventosDoGrid: function () {
-    const container = document.getElementById(
-      'meus-cortes-container'
-    );
+    const container = this.obterContainerGrid();
     if (!container) return;
 
     container.addEventListener('click', (event) => {
