@@ -172,6 +172,11 @@ const galeriaApp = {
 
   descartarVideo: function () {
     if (confirm('Deseja descartar as alterações atuais?')) {
+      if (this.videoAtualId) {
+        this.alternarStatus(this.videoAtualId);
+        return;
+      }
+
       if (galleryCoreApp?.resetPlayer) {
         galleryCoreApp.resetPlayer();
       } else {
