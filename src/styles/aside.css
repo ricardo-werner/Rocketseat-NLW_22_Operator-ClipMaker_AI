@@ -53,16 +53,16 @@
 }
 
 .btn-acc:hover {
-  background: #0056b3;
+  background: var(--control-hover-bg);
 }
 
 .btn-acc:focus-visible {
-  outline: 2px solid #38bdf8;
+  outline: 2px solid var(--focus-color);
   outline-offset: 2px;
 }
 
 .btn-acc[aria-pressed='true'] {
-  background-color: rgba(14, 165, 233, 0.14);
+  background-color: var(--control-active-bg);
   border-color: var(--primary-color);
   box-shadow: inset 0 0 0 1px var(--primary-color);
 }

@@ -21,7 +21,8 @@
   aspect-ratio: 16 / 9;
   background: #000;
   overflow: hidden;
-  border: var(--border-preview)
+  border: var(--border-preview);
+  border-radius: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -89,21 +90,21 @@
 }
 
 .btn-action-preview.save {
-  color: #00e676;
-  border: 2px solid #00e676;
+  color: var(--success-color);
+  border: 2px solid var(--success-color);
 }
 
 .btn-action-preview.save:hover {
-  background: #00e676;
-  color: #000;
+  background: var(--success-color);
+  color: #ffffff;
 }
 
 .btn-action-preview.discard {
-  color: #ff1744;
-  border: 1px solid #ff1744;
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
 }
 
 .btn-action-preview.discard:hover {
-  background: #ff1744;
+  background: var(--danger-color);
   color: #fff;
 }
