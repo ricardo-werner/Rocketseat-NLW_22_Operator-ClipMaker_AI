@@ -92,7 +92,6 @@ input[type='password']::placeholder {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  
 }
 
 .btn-primary:hover {
@@ -135,4 +134,3 @@ input[type='password']::placeholder {
   opacity: 1;
   visibility: visible;
 }
-
