@@ -101,9 +101,9 @@
 }
 
 .cut-card {
-  background: rgba(15, 23, 42, 0.7);
+  background: var(--card-bg);
   backdrop-filter: blur(0.6rem);
-  border: var(--border-preview);
+  border: 1px solid var(--border-color);
   border-radius: 0.8rem;
   margin-top: 4rem;
   padding: 2.4rem;
@@ -123,7 +123,7 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background: #222;
+  background: var(--card-actions-bg);
 }
 
 .card-header {
@@ -139,11 +139,20 @@
 
 .card-info strong {
   display: block;
-  color: #fff;
+  color: var(--card-title);
 }
 
 .card-info small {
-  color: #888;
+  color: var(--card-meta);
+}
+
+.btn-card {
+  color: var(--text-primary);
+  border-color: var(--focus-color);
+}
+
+.btn-card:hover:not(:disabled) {
+  background: var(--control-hover-bg);
 }
 
 .btn-card.is-disabled,
@@ -167,6 +176,15 @@
 .cut-card.disabled-card .btn-card.is-key-selected {
   background: rgba(255, 135, 0, 0.18);
   opacity: 1;
+}
+
+html.light-theme .cut-card.disabled-card {
+  opacity: 0.58;
+}
+
+html.light-theme .btn-delete {
+  color: var(--danger-color);
+  border-color: var(--danger-color);
 }
 
 .empty-msg {
