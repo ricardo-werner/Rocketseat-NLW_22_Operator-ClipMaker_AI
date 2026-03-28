@@ -9,6 +9,7 @@ Este projeto foi desenvolvido durante a trilha iniciante do evento **Rocketseat 
 O **ClipMaker AI** automatiza o processo de "trimming" (corte) e legendagem. A aplicação utiliza Inteligência Artificial para identificar o momento de maior impacto em um vídeo, promovendo não apenas o engajamento, mas também a inclusão digital através de legendas automáticas e acessíveis.
 
 ### 🧠 Fluxo de Funcionamento:
+
 1. **Upload**: Processamento de vídeo via Cloudinary.
 2. **Transcrição**: Geração de texto assistida por IA.
 3. **Análise IA**: O modelo **Gemini 2.5 Flash** define o trecho estratégico para o corte.
@@ -20,9 +21,19 @@ O **ClipMaker AI** automatiza o processo de "trimming" (corte) e legendagem. A a
 
 Refatoração profunda na lógica de persistência e interface para garantir um comportamento consistente:
 
-* **Controle de Estado do Botão**: O botão `Salvar na Galeria` (ID: `btn-save-cut`) é desativado automaticamente ao salvar ou reproduzir itens existentes.
-* **Gestão de Vídeos Desativados**: O player é resetado ao deletar um vídeo em reprodução, e cards `disabled` bloqueiam a função "Assistir".
-* **Deduplicação de Dados**: Motor que impede salvamentos duplicados comparando URLs e assinaturas de conteúdo.
+- **Controle de Estado do Botão**: O botão `Salvar na Galeria` (ID: `btn-save-cut`) é desativado automaticamente ao salvar ou reproduzir itens existentes.
+- **Gestão de Vídeos Desativados**: O player é resetado ao deletar um vídeo em reprodução, e cards `disabled` bloqueiam a função "Assistir".
+- **Deduplicação de Dados**: Motor que impede salvamentos duplicados comparando URLs e assinaturas de conteúdo.
+
+### ✅ Última Entrega (A11Y no Aside) — 2026-03-28
+
+Implementação completa dos três toggles de acessibilidade do `aside`, com foco em feedback visível, leitura assistiva e persistência:
+
+- **Tema Dia/Noite com Ícone Dinâmico**: alternância visual imediata e ícone coerente com o estado atual (☀️ claro / 🌙 escuro).
+- **Dislexia com Estado Explícito**: label textual atualizado em tempo real para `Dislexia: ON/OFF`.
+- **Baixa Visão com Níveis de Escala**: ciclo único `100% → 110% → 125% → 100%`, exibindo o nível no próprio botão (`Fonte: X%`).
+- **Persistência das Preferências**: estados salvos em `localStorage` para manter a experiência após reload.
+- **Aprimoramento A11Y**: uso de `aria-pressed` e atualização de `aria-label` para melhor interpretação por leitores de tela.
 
 ---
 
@@ -31,18 +42,21 @@ Refatoração profunda na lógica de persistência e interface para garantir um 
 Abaixo, imagens que detalham a interface e os pilares de acessibilidade implementados:
 
 #### 🖼️ Tela Inicial e Navegação via Teclado
+
 <p align="center">
   <img width="480" src="./src/to_readme/tela_inicial.PNG" alt="Tela inicial do projeto" />
   <img width="480" src="./src/to_readme/tela_inicial_tab.PNG" alt="Navegação via tecla TAB" />
 </p>
 
 #### 🖼️ Inclusão e Pilares da Acessibilidade
+
 <p align="center">
   <img width="480" src="./src/to_readme/tela_vlibras.PNG" alt="Modal VLibras" />
   <img width="480" src="./src/to_readme/tela_4_pilares.PNG" alt="Os 4 Pilares da Acessibilidade" />
 </p>
 
 #### 🖼️ Testes de Contraste e Validação
+
 <p align="center">
   <img width="480" src="./src/to_readme/tela_pratica_hight.PNG" alt="Desafio do Contraste" />
   <img width="480" src="./src/to_readme/tela_pratica_e.PNG" alt="Validação com erro" />
@@ -54,6 +68,7 @@ Abaixo, imagens que detalham a interface e os pilares de acessibilidade implemen
 ### 📦 Como Executar o Projeto
 
 1. **Clone o repositório:**
+
 ```bash
 git clone [https://github.com/ricardo-werner/ClipMaker_AI.git](https://github.com/ricardo-werner/ClipMaker_AI.git)
 ```
@@ -76,18 +91,21 @@ Se você usa o VS Code com a extensão Live Server, clique em "GO LIVE" no canto
 </p>
 
 ## 🛠 Tecnologias Utilizadas
-* HTML5 & CSS3: Layout responsivo com CSS Grid e foco total em acessibilidade (A11Y).
 
-* JavaScript (Vanilla): Manipulação de DOM, UUID e lógica de persistência híbrida.
+- HTML5 & CSS3: Layout responsivo com CSS Grid e foco total em acessibilidade (A11Y).
 
-* Gemini 2.5 Flash API: IA para análise de conteúdo e quebra de legendas.
+- JavaScript (Vanilla): Manipulação de DOM, UUID e lógica de persistência híbrida.
 
-* Cloudinary SDK: Gerenciamento e corte de mídia.
+- Gemini 2.5 Flash API: IA para análise de conteúdo e quebra de legendas.
+
+- Cloudinary SDK: Gerenciamento e corte de mídia.
 
 Persistência Local: Uso de localStorage para manter a galeria.
 
 ## 💡 Reflexão Técnica
+
 Desenvolver o ClipMaker AI foi uma jornada de aprendizado sobre como fundir front-end moderno com APIs de IA. O maior desafio técnico foi a implementação da Persistência Híbrida: garantir que o sistema leia um arquivo JSON fixo e o combine com interações do usuário no localStorage, tratando duplicatas e estados de UI de forma síncrona.
 
 ## 🙋‍♂️ Autor:
+
 Ricardo Werner - Desenvolvedor Front-end | Acessibilidade (A11Y) & Inclusão Digital
