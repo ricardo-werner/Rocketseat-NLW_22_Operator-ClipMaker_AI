@@ -10,9 +10,182 @@ if (!galleryItems || !galleryCoreApp) {
 const galeriaApp = {
   todosOsCortes: [],
   videoAtualId: null,
+  focoCardIndex: 0,
+  acaoSelecionadaPorCard: new Map(),
 
   obterContainerGrid: function () {
     return document.getElementById('lista-salvos');
+  },
+
+  obterCardsNavegaveis: function () {
+    const container = this.obterContainerGrid();
+    if (!container) return [];
+
+    return Array.from(
+      container.querySelectorAll('.cut-card')
+    );
+  },
+
+  obterAcoesDisponiveisDoCard: function (card) {
+    if (!card) return [];
+
+    return Array.from(
+      card.querySelectorAll('.btn-card[data-action]')
+    ).filter((botao) => !botao.disabled);
+  },
+
+  aplicarSelecaoAcaoNoCard: function (card, index = 0) {
+    if (!card) return;
+
+    const botoesDisponiveis =
+      this.obterAcoesDisponiveisDoCard(card);
+    const cardId = card.dataset.cardId || card.id;
+
+    Array.from(
+      card.querySelectorAll('.btn-card[data-action]')
+    ).forEach((botao) => {
+      botao.classList.remove('is-key-selected');
+    });
+
+    if (!botoesDisponiveis.length) {
+      card.dataset.selectedActionIndex = '0';
+      return;
+    }
+
+    const indexNormalizado = Math.min(
+      Math.max(index, 0),
+      botoesDisponiveis.length - 1
+    );
+
+    const botaoSelecionado =
+      botoesDisponiveis[indexNormalizado];
+    botaoSelecionado.classList.add('is-key-selected');
+
+    card.dataset.selectedActionIndex = String(
+      indexNormalizado
+    );
+
+    if (cardId) {
+      this.acaoSelecionadaPorCard.set(
+        cardId,
+        indexNormalizado
+      );
+    }
+  },
+
+  atualizarRovingTabIndex: function (preferCardId = null) {
+    const cards = this.obterCardsNavegaveis();
+
+    if (!cards.length) {
+      this.focoCardIndex = 0;
+      return;
+    }
+
+    let indiceAtivo = this.focoCardIndex;
+
+    if (preferCardId) {
+      const indicePreferido = cards.findIndex(
+        (card) =>
+          String(card.dataset.cardId || card.id) ===
+          String(preferCardId)
+      );
+
+      if (indicePreferido >= 0) {
+        indiceAtivo = indicePreferido;
+      }
+    }
+
+    indiceAtivo = Math.max(
+      0,
+      Math.min(indiceAtivo, cards.length - 1)
+    );
+
+    cards.forEach((card, index) => {
+      card.tabIndex = index === indiceAtivo ? 0 : -1;
+
+      const cardId = card.dataset.cardId || card.id;
+      const indiceSalvo = cardId
+        ? this.acaoSelecionadaPorCard.get(cardId)
+        : 0;
+
+      this.aplicarSelecaoAcaoNoCard(
+        card,
+        Number.isInteger(indiceSalvo) ? indiceSalvo : 0
+      );
+    });
+
+    this.focoCardIndex = indiceAtivo;
+  },
+
+  focarCardPorIndice: function (indice) {
+    const cards = this.obterCardsNavegaveis();
+    if (!cards.length) return;
+
+    const indiceNormalizado = Math.max(
+      0,
+      Math.min(indice, cards.length - 1)
+    );
+
+    cards.forEach((card, index) => {
+      card.tabIndex = index === indiceNormalizado ? 0 : -1;
+    });
+
+    this.focoCardIndex = indiceNormalizado;
+    cards[indiceNormalizado].focus();
+  },
+
+  focarCardPorId: function (cardId) {
+    if (!cardId) return false;
+
+    const cards = this.obterCardsNavegaveis();
+    const indice = cards.findIndex(
+      (card) =>
+        String(card.dataset.cardId || card.id) ===
+        String(cardId)
+    );
+
+    if (indice < 0) return false;
+
+    this.focarCardPorIndice(indice);
+    return true;
+  },
+
+  moverSelecaoAcaoNoCard: function (card, direcao) {
+    const botoesDisponiveis =
+      this.obterAcoesDisponiveisDoCard(card);
+    if (!botoesDisponiveis.length) return;
+
+    const total = botoesDisponiveis.length;
+    const atual = Number(
+      card.dataset.selectedActionIndex || '0'
+    );
+    const proximo = (atual + direcao + total) % total;
+
+    this.aplicarSelecaoAcaoNoCard(card, proximo);
+  },
+
+  ativarAcaoSelecionadaDoCard: function (card) {
+    const botoesDisponiveis =
+      this.obterAcoesDisponiveisDoCard(card);
+
+    if (!botoesDisponiveis.length) return;
+
+    const indiceSelecionado = Number(
+      card.dataset.selectedActionIndex || '0'
+    );
+
+    const botaoSelecionado =
+      botoesDisponiveis[
+        Math.max(
+          0,
+          Math.min(
+            indiceSelecionado,
+            botoesDisponiveis.length - 1
+          )
+        )
+      ];
+
+    botaoSelecionado?.click();
   },
 
   // Gera uma assinatura única para evitar duplicados por conteúdo
@@ -97,6 +270,7 @@ const galeriaApp = {
     this.renderizarNoGrid(listaAtualizada);
 
     this.videoAtualId = novoCorte.id;
+    this.focarCardPorId(novoCorte.id);
 
     // Bloqueia o botão logo após salvar com sucesso
     this.configurarBotaoSalvar(false);
@@ -134,33 +308,56 @@ const galeriaApp = {
     const container = this.obterContainerGrid();
     if (!container) return;
 
+    container.setAttribute('role', 'list');
+    container.setAttribute(
+      'aria-label',
+      'Lista de cortes salvos. Use TAB para navegar entre os cards e setas para escolher ações no card atual.'
+    );
+
     if (!lista || lista.length === 0) {
       container.innerHTML =
         '<p class="empty-msg">Nenhum corte salvo ainda.</p>';
+      this.focoCardIndex = 0;
       return;
     }
 
     container.innerHTML = lista
-      .map((video) => {
+      .map((video, index) => {
         const statusAtual =
           video.status === 'disabled'
             ? 'disabled'
             : 'enabled';
 
+        const cardId = String(video.id || index);
+        const titulo = video.titulo || 'Corte sem título';
+        const data = video.data || '18/03/2026';
+        const statusDescricao =
+          statusAtual === 'enabled'
+            ? 'ativo'
+            : 'desativado';
+
         return `
-            <div class="cut-card ${statusAtual === 'disabled' ? 'disabled-card' : ''}" id="${video.id}">
+            <div
+              class="cut-card ${statusAtual === 'disabled' ? 'disabled-card' : ''}"
+              id="${cardId}"
+              data-card-id="${cardId}"
+              data-card-index="${index}"
+              role="listitem"
+              tabindex="-1"
+              aria-label="Corte ${titulo}. Data ${data}. Status ${statusDescricao}."
+            >
                 <div class="card-header">
                     <span class="clapper-icon">🎬</span> 
                     <div class="card-info">
-                        <strong >${video.titulo}</strong>
-                        <small>${video.data || '18/03/2026'}</small>
+                        <strong >${titulo}</strong>
+                        <small>${data}</small>
                     </div>
                 </div>
             <div class="card-actions">
-              <button class="btn-card ${statusAtual === 'disabled' ? 'is-disabled' : ''}" data-action="assistir" data-id="${video.id}" ${statusAtual === 'disabled' ? 'disabled' : ''}>
+              <button class="btn-card ${statusAtual === 'disabled' ? 'is-disabled' : ''}" data-action="assistir" data-id="${cardId}" tabindex="-1" ${statusAtual === 'disabled' ? 'disabled' : ''}>
                         ▶️ Assistir
                     </button>
-              <button class="btn-card btn-delete" data-action="alternar-status" data-id="${video.id}">
+              <button class="btn-card btn-delete" data-action="alternar-status" data-id="${cardId}" tabindex="-1">
                         ${statusAtual === 'enabled' ? '🗑️ Deletar' : '🔄 Restaurar'}
                     </button>
                 </div>
@@ -168,6 +365,8 @@ const galeriaApp = {
         `;
       })
       .join('');
+
+    this.atualizarRovingTabIndex(this.videoAtualId);
   },
 
   descartarVideo: function () {
@@ -260,6 +459,7 @@ const galeriaApp = {
 
     const lista = await this.carregarTodaGaleria();
     this.renderizarNoGrid(lista);
+    this.focarCardPorId(id);
   },
 
   reproduzirDaGaleria: function (id) {
@@ -302,6 +502,17 @@ const galeriaApp = {
       const { action, id } = botao.dataset;
       if (!id) return;
 
+      const card = botao.closest('.cut-card');
+      if (card) {
+        const botoesDisponiveis =
+          this.obterAcoesDisponiveisDoCard(card);
+        const indiceAcao = botoesDisponiveis.indexOf(botao);
+
+        if (indiceAcao >= 0) {
+          this.aplicarSelecaoAcaoNoCard(card, indiceAcao);
+        }
+      }
+
       if (action === 'assistir') {
         this.reproduzirDaGaleria(id);
         return;
@@ -309,6 +520,81 @@ const galeriaApp = {
 
       if (action === 'alternar-status') {
         this.alternarStatus(id);
+      }
+    });
+  },
+
+  registrarEventosTecladoDoGrid: function () {
+    const container = this.obterContainerGrid();
+    if (!container) return;
+
+    container.addEventListener('focusin', (event) => {
+      const card = event.target.closest('.cut-card');
+      if (!card) return;
+
+      const cards = this.obterCardsNavegaveis();
+      const indice = cards.indexOf(card);
+
+      if (indice >= 0) {
+        this.focoCardIndex = indice;
+        cards.forEach((item, itemIndex) => {
+          item.tabIndex = itemIndex === indice ? 0 : -1;
+        });
+      }
+    });
+
+    container.addEventListener('keydown', (event) => {
+      const card = event.target.closest('.cut-card');
+      if (!card) return;
+
+      const cards = this.obterCardsNavegaveis();
+      const indiceAtual = cards.indexOf(card);
+
+      if (indiceAtual < 0) return;
+
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        this.moverSelecaoAcaoNoCard(card, 1);
+        return;
+      }
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        this.moverSelecaoAcaoNoCard(card, -1);
+        return;
+      }
+
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        this.focarCardPorIndice(indiceAtual + 1);
+        return;
+      }
+
+      if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        this.focarCardPorIndice(indiceAtual - 1);
+        return;
+      }
+
+      if (event.key === 'Home') {
+        event.preventDefault();
+        this.focarCardPorIndice(0);
+        return;
+      }
+
+      if (event.key === 'End') {
+        event.preventDefault();
+        this.focarCardPorIndice(cards.length - 1);
+        return;
+      }
+
+      if (
+        event.key === 'Enter' ||
+        event.key === ' ' ||
+        event.code === 'Space'
+      ) {
+        event.preventDefault();
+        this.ativarAcaoSelecionadaDoCard(card);
       }
     });
   },
@@ -324,6 +610,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   galeriaApp.registrarEventosDoGrid();
+  galeriaApp.registrarEventosTecladoDoGrid();
   const listaInicial =
     await galeriaApp.carregarTodaGaleria();
   galeriaApp.renderizarNoGrid(listaInicial);
