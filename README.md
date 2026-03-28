@@ -46,6 +46,16 @@ Implementação da navegação híbrida na galeria para melhorar a experiência 
 - **Fallback para Lista Vazia**: se não houver cards, o fluxo padrão de foco da página continua sem erros.
 - **Feedback Visual de Teclado**: destaque explícito para card focado e ação selecionada por setas.
 
+### ✅ Entrega Atual (Refino WCAG no Modo Dia) — 2026-03-28
+
+Ajuste visual completo para o tema claro, preservando integralmente o tema escuro:
+
+- **Paleta Clara Coerente e Moderna**: reestruturação dos tokens de cor do modo dia para superfícies, textos e bordas com contraste mais forte.
+- **Contraste de Conteúdo**: melhoria de legibilidade em textos secundários, cards, ações da galeria e áreas de formulário.
+- **Consistência em Componentes**: cards e áreas de ação da galeria agora seguem os tokens do tema claro em vez de cores fixas escuras.
+- **Foco de Teclado em Papaya**: bordas de foco padronizadas na cor Papaya no fluxo de navegação por teclado (inclusive aside e cards).
+- **Correções de Estilo**: pequenos ajustes de consistência e sintaxe CSS para manter previsibilidade visual no tema claro.
+
 ---
 
 ### 🧩 Exibição do Projeto e Conceitos A11Y
