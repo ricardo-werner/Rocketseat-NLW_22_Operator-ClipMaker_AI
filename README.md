@@ -35,6 +35,17 @@ Implementação completa dos três toggles de acessibilidade do `aside`, com foc
 - **Persistência das Preferências**: estados salvos em `localStorage` para manter a experiência após reload.
 - **Aprimoramento A11Y**: uso de `aria-pressed` e atualização de `aria-label` para melhor interpretação por leitores de tela.
 
+### ✅ Entrega Atual (Navegação por Teclado nos Cards) — 2026-03-28
+
+Implementação da navegação híbrida na galeria para melhorar a experiência de teclado em listas de cortes:
+
+- **Tab Card-a-Card**: o foco principal percorre os cards individualmente (em vez de passar por todos os botões internos de uma vez).
+- **Setas para Ações Internas**: no card focado, `←/→` alternam entre ações disponíveis (`Reproduzir`, `Deletar` ou `Restaurar`).
+- **Ativação por Teclado**: `Enter` e `Espaço` executam a ação interna selecionada.
+- **Navegação Vertical da Lista**: `↑/↓`, `Home` e `End` movem o foco entre cards com previsibilidade.
+- **Fallback para Lista Vazia**: se não houver cards, o fluxo padrão de foco da página continua sem erros.
+- **Feedback Visual de Teclado**: destaque explícito para card focado e ação selecionada por setas.
+
 ---
 
 ### 🧩 Exibição do Projeto e Conceitos A11Y
