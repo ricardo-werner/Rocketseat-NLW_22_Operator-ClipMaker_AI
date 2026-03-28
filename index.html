@@ -31,8 +31,14 @@
 
     <link rel="stylesheet" href="./src/styles/index.css" />
     <script>
-      if (localStorage.getItem('theme') === 'light') {
-        document.documentElement.classList.add('light');
+      const savedTheme =
+        localStorage.getItem('clipmaker.theme') ||
+        localStorage.getItem('theme');
+
+      if (savedTheme === 'light') {
+        document.documentElement.classList.add(
+          'light-theme'
+        );
       }
     </script>
   </head>
@@ -87,14 +93,19 @@
             id="theme-toggle"
             class="btn-acc"
             aria-label="Alternar tema claro e escuro"
+            aria-pressed="false"
           >
             <i
               data-lucide="moon"
               class="icon"
               aria-hidden="true"
             ></i>
-            <span class="btn-label" aria-hidden="true"
-              >Dia / Noite</span
+            <span
+              id="theme-toggle-label"
+              class="btn-label"
+              aria-hidden="true"
+            >
+              Dia / Noite</span
             >
           </button>
         </div>
@@ -102,32 +113,40 @@
         <div class="acc-group vision">
           <label> Leitura e Visão: </label>
           <button
-            onclick="toggleDislexia()"
+            id="dislexia-toggle"
             class="btn-acc"
             aria-label="Ativar ou desativar fonte para dislexia"
+            aria-pressed="false"
           >
             <i
               data-lucide="type"
               class="icon"
               aria-hidden="true"
             ></i>
-            <span class="btn-label" aria-hidden="true"
-              >Dislexia</span
+            <span
+              id="dislexia-toggle-label"
+              class="btn-label"
+              aria-hidden="true"
+              >Dislexia: OFF</span
             >
           </button>
 
           <button
-            onclick="toggleEnhancedVision()"
+            id="vision-toggle"
             class="btn-acc"
-            aria-label="Ativar Modo de Alta Legibilidade"
+            aria-label="Aumentar tamanho da fonte entre 100%, 110% e 125%"
+            aria-pressed="false"
           >
             <i
               data-lucide="zoom-in"
               class="icon"
               aria-hidden="true"
             ></i>
-            <span class="btn-label" aria-hidden="true"
-              >Aumentar Fonte</span
+            <span
+              id="vision-toggle-label"
+              class="btn-label"
+              aria-hidden="true"
+              >Fonte: 100%</span
             >
           </button>
         </div>
