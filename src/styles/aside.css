@@ -3,11 +3,11 @@
   padding: 4rem 2rem;
   background-color: var(--surface-color);
   border-right: 1px solid var(--border-color);
-  height: calc(100vh - 12rem);
-  position: sticky;
-  top: 12rem;
-  align-self: flex-start;
-  overflow-y: auto;
+  height: auto;
+  position: static;
+  top: auto;
+  align-self: stretch;
+  overflow-y: visible;
 }
 
 .sidebar h3 {
@@ -122,9 +122,31 @@ html.light-theme .btn-acc[aria-pressed='true'] .lucide {
 @media (min-width: 768px) {
   .sidebar {
     position: sticky;
-    top: 12rem;
-    height: calc(100vh - 12rem);
+    top: 9.6rem;
+    max-height: calc(100vh - 9.6rem);
     align-self: flex-start;
     overflow-y: auto;
+    border-bottom: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    top: 10.4rem;
+    max-height: calc(100vh - 10.4rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .sidebar {
+    top: 11.2rem;
+    max-height: calc(100vh - 11.2rem);
+  }
+}
+
+@media (min-width: 1536px) {
+  .sidebar {
+    top: 12rem;
+    max-height: calc(100vh - 12rem);
   }
 }
