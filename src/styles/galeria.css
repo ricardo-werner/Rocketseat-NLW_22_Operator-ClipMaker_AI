@@ -3,6 +3,12 @@
   display: block;
 }
 
+html.light-theme #cortes-salvos,
+html.light-theme #lista-salvos,
+html.light-theme .cuts-grid {
+  background: #f0f4f8;
+}
+
 /* Área da Galeria (container dos cards) */
 #lista-salvos,
 .cuts-grid {
@@ -111,6 +117,13 @@
   transition:
     transform 0.2s,
     opacity 0.3s;
+}
+
+html.light-theme .cut-card {
+  background: #ffffff;
+  backdrop-filter: none;
+  border: 1px solid #dce5ea;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 /* Efeito para o status 'disabled' que você solicitou */

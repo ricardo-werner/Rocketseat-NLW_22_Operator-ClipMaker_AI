@@ -16,6 +16,14 @@
   margin: 0 10rem;
 }
 
+html.light-theme .main-header {
+  border-radius: 12px;
+}
+
+html.light-theme .main-header .header-content {
+  border-radius: 12px;
+}
+
 .logo-img {
   width: 50rem;
   height: 30rem;
@@ -35,6 +43,11 @@
 .header-nav a {
   font-size: 1.6rem;
   color: var(--text-secondary);
+}
+
+html.light-theme .header-nav a {
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .header-nav a:hover {

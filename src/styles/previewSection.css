@@ -7,10 +7,19 @@
   text-align: center;
 }
 
+html.light-theme .preview-section {
+  background: #f0f4f8;
+}
+
 .preview-section h2 {
   font-size: 2.4rem;
   color: var(--primary-color);
   margin-bottom: 2rem;
+}
+
+html.light-theme .preview-section h2 {
+  font-weight: 650;
+  letter-spacing: -0.2px;
 }
 
 .player-wrapper {
@@ -24,6 +33,12 @@
   border: var(--border-preview);
   border-radius: 1rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+html.light-theme .player-wrapper {
+  background: #f0f4f8;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .video {
