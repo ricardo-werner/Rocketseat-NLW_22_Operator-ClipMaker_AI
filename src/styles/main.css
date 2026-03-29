@@ -24,7 +24,9 @@
   }
 
   .main-content {
-    min-height: calc(100vh - clamp(9.2rem, 10vw, 10.8rem));
+    min-height: calc(
+      100vh - var(--aside-fixed-top, 9.8rem)
+    );
   }
 }
 
