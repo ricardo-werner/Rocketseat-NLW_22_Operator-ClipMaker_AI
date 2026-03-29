@@ -56,6 +56,15 @@ Ajuste visual completo para o tema claro, preservando integralmente o tema escur
 - **Foco de Teclado em Papaya**: bordas de foco padronizadas na cor Papaya no fluxo de navegação por teclado (inclusive aside e cards).
 - **Correções de Estilo**: pequenos ajustes de consistência e sintaxe CSS para manter previsibilidade visual no tema claro.
 
+### ✅ Entrega Atual (Refinamento Final Clean Code + WCAG 2.2) — 2026-03-29
+
+Fechamento técnico com foco em robustez de acessibilidade e previsibilidade de navegação por teclado:
+
+- **Focus Ring WCAG 2.2 no Tema Claro**: `:focus-visible` com borda dupla (outline Papaya + anel externo escuro) para reforçar contraste em superfícies claras.
+- **ARIA Live no Status de Operações**: região dinâmica de status configurada com `role="status"`, `aria-live="polite"` e `aria-atomic="true"` para anúncios consistentes em leitor de tela.
+- **Roving Tabindex Pós-Render Blindado**: ajuste para garantir que somente um card receba `tabindex="0"` após re-renderizações (salvar/atualizar), com demais cards em `-1`.
+- **Estratégia de Modularização ES6 (Roadmap)**: separação planejada em `a11y.js` e `gallery.js`, com composição em `main.js`, mantendo camada de compatibilidade para escopo global durante migração incremental.
+
 ---
 
 ### 🧩 Exibição do Projeto e Conceitos A11Y
