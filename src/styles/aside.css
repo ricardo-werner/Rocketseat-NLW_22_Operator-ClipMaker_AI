@@ -16,6 +16,10 @@
   margin-bottom: 1.2rem;
 }
 
+html.light-theme .sidebar h3 {
+  opacity: 1;
+}
+
 .acc-group {
   margin-bottom: 2.5rem;
 }

@@ -21,23 +21,24 @@
 }
 
 html.light-theme {
-  --bg-main: #f0f4f8;
+  --bg-main: #f4f7f9;
   --bg-color: #ffffff;
   --surface-color: #ffffff;
-  --surface-muted: #e2e8f0;
+  --surface-muted: #dce5ea;
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --primary-color: #60a5fa;
-  --btn-primary: linear-gradient(135deg, #7dd3fc, #38bdf8);
-  --border-color: #cbd5e1;
+  --primary-color: #092b2b;
+  --focus-color: #fc510b;
+  --btn-primary: linear-gradient(135deg, #0f3d3d, #092b2b);
+  --border-color: #64748b;
   --card-bg: #ffffff;
-  --card-actions-bg: #f8fafc;
+  --card-actions-bg: #eef3f6;
   --card-title: #0f172a;
   --card-meta: #475569;
-  --control-hover-bg: rgba(56, 189, 248, 0.2);
-  --control-active-bg: rgba(56, 189, 248, 0.28);
-  --danger-color: #b42318;
-  --success-color: #166534;
+  --control-hover-bg: rgba(9, 43, 43, 0.12);
+  --control-active-bg: rgba(9, 43, 43, 0.2);
+  --danger-color: #912018;
+  --success-color: #14532d;
 }
 
 html.light-theme
