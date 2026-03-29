@@ -21,7 +21,7 @@
 }
 
 html.light-theme {
-  --bg-main: #f4f7f9;
+  --bg-main: #f0f4f8;
   --bg-color: #ffffff;
   --surface-color: #ffffff;
   --surface-muted: #dce5ea;
@@ -52,9 +52,9 @@ html.light-theme
     [tabindex]:not([tabindex='-1']),
     .cut-card
   ):focus-visible {
-  outline: 3px solid var(--focus-color) !important;
+  outline: 3px solid #ff8700 !important;
   outline-offset: 2px !important;
-  box-shadow: 0 0 0 6px var(--text-primary) !important;
+  box-shadow: 0 0 0 6px #0f172a !important;
 }
 
 .skip-link {

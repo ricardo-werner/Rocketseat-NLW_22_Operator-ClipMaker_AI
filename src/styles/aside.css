@@ -18,6 +18,15 @@
 
 html.light-theme .sidebar h3 {
   opacity: 1;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+html.light-theme #acc-title {
+  border-radius: 12px;
+  background: #eef3f6;
+  padding: 0.6rem 0.8rem;
+  display: inline-block;
 }
 
 .acc-group {
@@ -69,6 +78,17 @@ html.light-theme .sidebar h3 {
   background-color: var(--control-active-bg);
   border-color: var(--primary-color);
   box-shadow: inset 0 0 0 1px var(--primary-color);
+}
+
+html.light-theme .btn-acc[aria-pressed='true'] {
+  background: #ff8700;
+  color: #0f172a;
+}
+
+html.light-theme .btn-acc[aria-pressed='true'] .icon,
+html.light-theme .btn-acc[aria-pressed='true'] .lucide {
+  color: #0f172a;
+  stroke: #0f172a;
 }
 
 .btn-acc .img {
