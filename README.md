@@ -36,6 +36,12 @@ Correção estrutural completa do Header para eliminar regressões visuais e tor
 - **Foco Duplo AAA no Tema Claro (Header)**: reforço explícito de `:focus-visible` com `outline: 3px solid #ff8700` e `box-shadow: 0 0 0 6px #0f172a` no escopo do Header, preservando acessibilidade por teclado.
 - **Consistência Gulf/GT40**: manutenção da linguagem visual via tokens existentes do projeto para hover/active/focus nos dois temas.
 
+#### 🔧 Hotfix complementar (Container do Header em largura total) — 2026-03-29
+
+- Container principal do Header ajustado para **ocupar 100% da largura horizontal** (`width: 100%`) sem margens laterais externas.
+- Remoção de `border-radius` externo do container principal para evitar aparência de “ilha flutuante”.
+- `border-radius` preservado nos links de navegação (`a`) para manter micro-interações visuais modernas.
+
 ### ✅ Entrega Atual (Ajuste de Layout Final — Header + Aside Fixo md→2XL) — 2026-03-29
 
 Refino de estabilidade visual para manter a leitura da interface mais consistente durante a rolagem:
