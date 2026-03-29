@@ -20,7 +20,7 @@
 @media (min-width: 768px) and (max-width: 1535.98px) {
   .app-container {
     display: block;
-    padding-left: 28rem;
+    padding-left: var(--layout-sidebar-width);
   }
 
   .main-content {

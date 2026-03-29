@@ -16,24 +16,26 @@
   justify-content: space-between;
   align-items: center;
   min-height: clamp(5.2rem, 7vw, 6.4rem);
-  padding: 0.6rem clamp(1.2rem, 2.4vw, 2rem);
+  padding: 0.6rem var(--layout-header-gutter-inline);
   gap: clamp(1.2rem, 2vw, 2.4rem);
 }
 
 .logo-link {
   display: inline-flex;
   align-items: center;
-  block-size: 100%;
-  max-inline-size: min(42vw, 20rem);
+  justify-content: flex-start;
+  min-block-size: 100%;
+  max-inline-size: min(60vw, 32rem);
   border-radius: 0.8rem;
   flex-shrink: 0;
 }
 
 .logo-image,
 .logo-img {
+  display: block;
   width: auto;
-  height: 60%;
-  max-height: 4rem;
+  height: clamp(4.2rem, 8.5vw, 5.8rem);
+  max-height: none;
   max-width: 100%;
   object-fit: contain;
 }
@@ -86,19 +88,20 @@ html.light-theme .main-header :is(a, button):focus-visible {
 @media (min-width: 768px) {
   .main-header .header-content {
     min-height: clamp(7.2rem, 8vw, 8.8rem);
+    padding-left: calc(
+      var(--layout-sidebar-width) +
+        var(--layout-header-gutter-inline)
+    );
   }
 
   .logo-link {
-    height: 100%;
+    max-inline-size: min(32vw, 40rem);
   }
 
-  #app-logo {
-    width: auto;
-    height: 100%;
-    max-height: 80px;
-    object-fit: contain;
-    padding-top: 8px;
-    padding-bottom: 8px;
+  #app-logo,
+  .logo-image,
+  .logo-img {
+    height: clamp(5.8rem, 6.2vw, 8.8rem);
   }
 
   html.light-theme #app-logo {
@@ -123,6 +126,6 @@ html.light-theme .main-header :is(a, button):focus-visible {
 
   .logo-image,
   .logo-img {
-    max-height: 3.4rem;
+    height: clamp(3.8rem, 11vw, 4.8rem);
   }
 }

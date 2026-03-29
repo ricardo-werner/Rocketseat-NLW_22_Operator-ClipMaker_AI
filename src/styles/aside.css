@@ -1,5 +1,5 @@
 .sidebar {
-  width: 28rem;
+  width: var(--layout-sidebar-width);
   padding: 2rem 2rem;
   background-color: var(--surface-color);
   border-right: 1px solid var(--border-color);
@@ -141,7 +141,7 @@ html.light-theme .btn-acc[aria-pressed='true'] .lucide {
     position: fixed;
     top: var(--aside-fixed-top);
     left: 0;
-    width: 28rem;
+    width: var(--layout-sidebar-width);
     height: calc(100vh - var(--aside-fixed-top));
     max-height: calc(100vh - var(--aside-fixed-top));
     z-index: 900;
