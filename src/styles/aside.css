@@ -133,14 +133,30 @@ html.light-theme .btn-acc[aria-pressed='true'] .lucide {
 }
 
 @media (min-width: 768px) and (max-width: 1535.98px) {
+  :root {
+    --aside-fixed-top: 9.8rem;
+  }
+
   .sidebar {
     position: fixed;
-    top: clamp(9.2rem, 10vw, 10.8rem);
+    top: var(--aside-fixed-top);
     left: 0;
     width: 28rem;
-    height: calc(100vh - clamp(9.2rem, 10vw, 10.8rem));
-    max-height: calc(100vh - clamp(9.2rem, 10vw, 10.8rem));
+    height: calc(100vh - var(--aside-fixed-top));
+    max-height: calc(100vh - var(--aside-fixed-top));
     z-index: 900;
     margin-top: 0;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1279.98px) {
+  :root {
+    --aside-fixed-top: 10.2rem;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1535.98px) {
+  :root {
+    --aside-fixed-top: 10.6rem;
   }
 }

@@ -32,6 +32,7 @@ Refino de estabilidade visual para manter a leitura da interface mais consistent
 - **Header com Mais Respiro Visual**: aumento de padding interno e reforço de bordas arredondadas para reduzir aspecto “quebrado” no topo.
 - **Aside Fixo no Intervalo `md -> 2XL`**: menu lateral passa a permanecer fixo durante toda a rolagem do conteúdo principal, sem deslocamento no final da página.
 - **Compensação Estrutural da Main**: ajuste de layout para reservar a largura do aside fixo e evitar sobreposição do conteúdo principal nesse intervalo de breakpoints.
+- **Calibração Fina por Breakpoint (`md`, `lg`, `xl`)**: offset vertical do aside ajustado por faixa de largura para casar visualmente com a altura do header e manter estabilidade durante toda a rolagem.
 
 ### ✅ Entrega Atual (Refino Visual no Tema Claro — Bordas + Foco + Micro-foco) — 2026-03-29
 
