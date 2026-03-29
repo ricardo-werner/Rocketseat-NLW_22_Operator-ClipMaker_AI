@@ -2,11 +2,13 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  margin-inline: clamp(1.2rem, 4vw, 4rem);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
   background: var(--surface-color);
   backdrop-filter: blur(0.8rem);
   border: 1px solid var(--border-color);
-  border-radius: 1.2rem;
+  border-radius: 0;
 }
 
 .main-header .header-content {
@@ -76,20 +78,12 @@
   outline-offset: 2px;
 }
 
-html.light-theme .main-header {
-  border-radius: 1.2rem;
-}
-
 html.light-theme .main-header :is(a, button):focus-visible {
   outline: 3px solid #ff8700 !important;
   box-shadow: 0 0 0 6px #0f172a !important;
 }
 
 @media (max-width: 640px) {
-  .main-header {
-    margin-inline: 1rem;
-  }
-
   .main-header .header-content {
     padding-inline: 1rem;
     min-height: 5rem;
