@@ -79,6 +79,17 @@ Refino específico para `html.light-theme`, preservando o tema escuro e prioriza
 
 Resultado: conformidade orientada a **AA obrigatório** com aplicação de **AAA onde viável** no modo claro.
 
+### ✅ Entrega Atual (Refatoração Light Theme — UI/UX + WCAG 2.2) — 2026-03-29
+
+Refatoração visual e de acessibilidade aplicada exclusivamente em `html.light-theme`, mantendo compatibilidade com a arquitetura atual baseada em classes e atributos ARIA:
+
+- **Acessibilidade Crítica em Botões Ativos do Aside**: estado ativo baseado em `button[aria-pressed="true"]` com fundo Papaya e texto/ícones em `#0f172a` para contraste adequado.
+- **Foco Duplo WCAG 2.2 (AAA em superfícies claras)**: padrão global no modo claro com `outline: 3px solid #ff8700` + `box-shadow: 0 0 0 6px #0f172a` para elementos focáveis.
+- **Harmonização Header + Aside**: bordas suavizadas (`border-radius: 12px`) no topo e no título do menu lateral, com ajuste fino de peso e espaçamento tipográfico no tema claro.
+- **Full Light Theming no Main**: containers de conteúdo principal, preview/player e galeria alinhados ao fundo Gelo (`#f0f4f8`) sem blocos escuros incoerentes.
+- **Cards com Elevação Suave**: cards da galeria em branco puro (`#ffffff`) com sombra leve `0 4px 6px -1px rgba(0, 0, 0, 0.05)`.
+- **Input da API Key no Light**: campo com fundo claro, borda sutil (`#cbd5e1`) e texto escuro para leitura confortável e consistência visual.
+
 ---
 
 ### 🧩 Exibição do Projeto e Conceitos A11Y
