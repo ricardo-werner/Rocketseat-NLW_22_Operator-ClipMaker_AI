@@ -34,6 +34,7 @@ Ajuste estético e de acessibilidade aplicado para deixar o modo claro mais eleg
 - **Proteção contra Conflito de Estilos de Foco**: regra no escopo de `html.light-theme` com prioridade para preservar acessibilidade mesmo diante de estilos locais concorrentes.
 - **Micro-foco da Galeria com Alto Contraste**: `.is-key-selected` no tema claro passou a usar fundo Teal escuro, texto branco e contorno destacado, deixando explícito qual ação interna do card está ativa.
 - **Consistência em Estado Desativado**: variação visual equivalente para cards desabilitados, mantendo legibilidade e previsibilidade durante navegação por setas.
+- **Auditoria de Consistência Pós-Entrega**: removido resquício de borda exagerada em regra legada de card e reforçada a prioridade do micro-foco no modo claro para evitar perda visual por sobrescrita de CSS.
 
 ### ✅ Última Entrega (A11Y no Aside) — 2026-03-28
 
