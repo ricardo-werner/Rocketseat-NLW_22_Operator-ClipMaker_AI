@@ -65,6 +65,20 @@ Fechamento técnico com foco em robustez de acessibilidade e previsibilidade de 
 - **Roving Tabindex Pós-Render Blindado**: ajuste para garantir que somente um card receba `tabindex="0"` após re-renderizações (salvar/atualizar), com demais cards em `-1`.
 - **Estratégia de Modularização ES6 (Roadmap)**: separação planejada em `a11y.js` e `gallery.js`, com composição em `main.js`, mantendo camada de compatibilidade para escopo global durante migração incremental.
 
+### ✅ Entrega Atual (Calibragem WCAG no Tema Claro — AA + AAA) — 2026-03-29
+
+Refino específico para `html.light-theme`, preservando o tema escuro e priorizando contraste real em componentes interativos e tipografia:
+
+- **Paleta Ajustada com Base na Identidade Visual**: tons claros foram recalibrados para garantir legibilidade sem perder coerência estética.
+- **Texto/Links com Contraste Forte**: `--primary-color` no tema claro ajustado para `#092b2b`, elevando contraste em fundos brancos.
+- **Foco de Teclado Mais Robusto**: `--focus-color` atualizado para `#fc510b`, mantendo foco perceptível em superfícies claras.
+- **CTA Principal Mais Legível**: `--btn-primary` alterado para gradiente escuro (`#0f3d3d` → `#092b2b`) com texto branco.
+- **Bordas de Controles Reforçadas**: `--border-color` escurecido para melhorar distinção visual de inputs, cards e botões.
+- **Aside com Melhor Leitura no Tema Claro**: títulos `h3` sem opacidade reduzida (`opacity: 1`) para evitar perda de contraste.
+- **Pente Fino Pré-Testes de Usuário**: cores semânticas de sucesso/erro no modo claro ajustadas para tons mais escuros (`#14532d` e `#912018`) elevando contraste em botões e estados de ação.
+
+Resultado: conformidade orientada a **AA obrigatório** com aplicação de **AAA onde viável** no modo claro.
+
 ---
 
 ### 🧩 Exibição do Projeto e Conceitos A11Y
