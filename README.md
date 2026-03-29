@@ -25,6 +25,17 @@ Refatoração profunda na lógica de persistência e interface para garantir um 
 - **Gestão de Vídeos Desativados**: O player é resetado ao deletar um vídeo em reprodução, e cards `disabled` bloqueiam a função "Assistir".
 - **Deduplicação de Dados**: Motor que impede salvamentos duplicados comparando URLs e assinaturas de conteúdo.
 
+### ✅ Entrega Atual (Reescrita Consolidada do Header/Topbar — CSS Moderno + A11Y) — 2026-03-29
+
+Correção estrutural completa do Header para eliminar regressões visuais e tornar o topo da interface mais compacto, responsivo e consistente entre tema claro/escuro:
+
+- **Geometria Limpa com Flexbox**: `header-content` consolidado com `display: flex`, `justify-content: space-between` e `align-items: center`, removendo excesso de altura vertical.
+- **Header Compacto e Moderno**: redução de padding vertical e altura efetiva do topo para recuperar espaço útil em telas como `1366x768`.
+- **Logo Responsivo sem Quebra de Layout**: imagem passa a respeitar limites do container (`height` relativa + `max-height` + `width: auto`), sem ditar a altura do Header.
+- **Navegação Refinada (ul/li/a)**: remoção do visual rígido, aplicação de `border-radius` nos links e ajuste de `gap`, `padding` e tipografia para aparência mais leve e contemporânea.
+- **Foco Duplo AAA no Tema Claro (Header)**: reforço explícito de `:focus-visible` com `outline: 3px solid #ff8700` e `box-shadow: 0 0 0 6px #0f172a` no escopo do Header, preservando acessibilidade por teclado.
+- **Consistência Gulf/GT40**: manutenção da linguagem visual via tokens existentes do projeto para hover/active/focus nos dois temas.
+
 ### ✅ Entrega Atual (Ajuste de Layout Final — Header + Aside Fixo md→2XL) — 2026-03-29
 
 Refino de estabilidade visual para manter a leitura da interface mais consistente durante a rolagem:
