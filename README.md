@@ -42,6 +42,15 @@ Correção estrutural completa do Header para eliminar regressões visuais e tor
 - Remoção de `border-radius` externo do container principal para evitar aparência de “ilha flutuante”.
 - `border-radius` preservado nos links de navegação (`a`) para manter micro-interações visuais modernas.
 
+#### 🖼️ Ajuste de logo responsivo por tema (swap dinâmico) — 2026-03-29
+
+- Elemento de logotipo no Header padronizado com `id="app-logo"` para controle programático.
+- Lógica de alternância de tema agora sincroniza o `src` do logo via operador ternário no script de tema.
+- Caminhos principais aplicados no swap:
+  - `./src/images/clipmaker-logo-light.svg` (tema claro)
+  - `./src/images/clipmaker-logo-dark.svg` (tema escuro)
+- Compatibilidade adicional com nomes já presentes na pasta de imagens usando fallback automático de caminho.
+
 ### ✅ Entrega Atual (Ajuste de Layout Final — Header + Aside Fixo md→2XL) — 2026-03-29
 
 Refino de estabilidade visual para manter a leitura da interface mais consistente durante a rolagem:
