@@ -40,7 +40,17 @@ html.light-theme {
   --success-color: #166534;
 }
 
-html.light-theme :focus-visible {
+html.light-theme
+  :is(
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    [role='button'],
+    [tabindex]:not([tabindex='-1']),
+    .cut-card
+  ):focus-visible {
   outline: 3px solid var(--focus-color) !important;
   outline-offset: 2px !important;
   box-shadow: 0 0 0 6px var(--text-primary) !important;

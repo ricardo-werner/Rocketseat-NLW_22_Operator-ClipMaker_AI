@@ -81,7 +81,7 @@ const galeriaApp = {
       return;
     }
 
-    let indiceAtivo = this.focoCardIndex;
+    let indiceAtivo = 0;
 
     if (preferCardId) {
       const indicePreferido = cards.findIndex(
@@ -93,15 +93,25 @@ const galeriaApp = {
       if (indicePreferido >= 0) {
         indiceAtivo = indicePreferido;
       }
+    } else if (
+      Number.isInteger(this.focoCardIndex) &&
+      this.focoCardIndex >= 0 &&
+      this.focoCardIndex < cards.length
+    ) {
+      indiceAtivo = this.focoCardIndex;
     }
 
-    indiceAtivo = Math.max(
-      0,
-      Math.min(indiceAtivo, cards.length - 1)
-    );
-
     cards.forEach((card, index) => {
-      card.tabIndex = index === indiceAtivo ? 0 : -1;
+      card.setAttribute(
+        'tabindex',
+        index === indiceAtivo ? '0' : '-1'
+      );
+
+      card
+        .querySelectorAll('.btn-card[data-action]')
+        .forEach((botao) => {
+          botao.setAttribute('tabindex', '-1');
+        });
 
       const cardId = card.dataset.cardId || card.id;
       const indiceSalvo = cardId
@@ -264,12 +274,14 @@ const galeriaApp = {
       JSON.stringify(galeriaLocal)
     );
 
+    this.videoAtualId = novoCorte.id;
+
     // Recarrega as duas fontes e renderiza
     const listaAtualizada =
       await this.carregarTodaGaleria();
     this.renderizarNoGrid(listaAtualizada);
 
-    this.videoAtualId = novoCorte.id;
+    this.atualizarRovingTabIndex(this.videoAtualId);
     this.focarCardPorId(novoCorte.id);
 
     // Bloqueia o botão logo após salvar com sucesso
