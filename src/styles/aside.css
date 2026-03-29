@@ -131,3 +131,16 @@ html.light-theme .btn-acc[aria-pressed='true'] .lucide {
     border-bottom: none;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1535.98px) {
+  .sidebar {
+    position: fixed;
+    top: clamp(9.2rem, 10vw, 10.8rem);
+    left: 0;
+    width: 28rem;
+    height: calc(100vh - clamp(9.2rem, 10vw, 10.8rem));
+    max-height: calc(100vh - clamp(9.2rem, 10vw, 10.8rem));
+    z-index: 900;
+    margin-top: 0;
+  }
+}

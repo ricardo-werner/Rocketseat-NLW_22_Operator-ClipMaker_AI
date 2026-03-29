@@ -25,6 +25,14 @@ Refatoração profunda na lógica de persistência e interface para garantir um 
 - **Gestão de Vídeos Desativados**: O player é resetado ao deletar um vídeo em reprodução, e cards `disabled` bloqueiam a função "Assistir".
 - **Deduplicação de Dados**: Motor que impede salvamentos duplicados comparando URLs e assinaturas de conteúdo.
 
+### ✅ Entrega Atual (Ajuste de Layout Final — Header + Aside Fixo md→2XL) — 2026-03-29
+
+Refino de estabilidade visual para manter a leitura da interface mais consistente durante a rolagem:
+
+- **Header com Mais Respiro Visual**: aumento de padding interno e reforço de bordas arredondadas para reduzir aspecto “quebrado” no topo.
+- **Aside Fixo no Intervalo `md -> 2XL`**: menu lateral passa a permanecer fixo durante toda a rolagem do conteúdo principal, sem deslocamento no final da página.
+- **Compensação Estrutural da Main**: ajuste de layout para reservar a largura do aside fixo e evitar sobreposição do conteúdo principal nesse intervalo de breakpoints.
+
 ### ✅ Entrega Atual (Refino Visual no Tema Claro — Bordas + Foco + Micro-foco) — 2026-03-29
 
 Ajuste estético e de acessibilidade aplicado para deixar o modo claro mais elegante e com estados de teclado inequivocamente visíveis:
