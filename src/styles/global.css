@@ -33,8 +33,11 @@ html.light-theme {
   --card-bg: #ffffff;
   --card-actions-bg: #f8fafc;
   --card-title: #0f172a;
+  --card-meta: #475569;
   --control-hover-bg: rgba(56, 189, 248, 0.2);
   --control-active-bg: rgba(56, 189, 248, 0.28);
+  --danger-color: #b42318;
+  --success-color: #166534;
 }
 
 html.light-theme :focus-visible {
