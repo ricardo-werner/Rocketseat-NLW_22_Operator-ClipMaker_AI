@@ -2,6 +2,12 @@
   display: flex;
 }
 
+@media (max-width: 767.98px) {
+  .app-container {
+    flex-direction: column;
+  }
+}
+
 html.light-theme .app-container {
   background: #f0f4f8;
 }

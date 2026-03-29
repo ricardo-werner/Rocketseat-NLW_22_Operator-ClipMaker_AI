@@ -90,6 +90,14 @@ Refatoração visual e de acessibilidade aplicada exclusivamente em `html.light-
 - **Cards com Elevação Suave**: cards da galeria em branco puro (`#ffffff`) com sombra leve `0 4px 6px -1px rgba(0, 0, 0, 0.05)`.
 - **Input da API Key no Light**: campo com fundo claro, borda sutil (`#cbd5e1`) e texto escuro para leitura confortável e consistência visual.
 
+### ✅ Entrega Atual (Correção de Sticky Responsivo no Aside) — 2026-03-29
+
+Ajuste de layout para manter o menu lateral previsível no scroll e evitar deslocamento visual em breakpoints menores:
+
+- **`md` até desktop**: `aside` com comportamento sticky estável (`position: sticky`) e rolagem interna quando necessário.
+- **Mobile**: `aside` deixa de usar sticky (`position: static`) e o layout passa a empilhar (`aside` acima do conteúdo principal), evitando efeito de “subir” indevido.
+- **Robustez em container flex**: refinado alinhamento do `aside` para manter fixação correta durante a rolagem da página.
+
 ---
 
 ### 🧩 Exibição do Projeto e Conceitos A11Y
