@@ -12,6 +12,32 @@ function applyTheme(isLightTheme) {
     isLightTheme
   );
 
+  const appLogo = document.getElementById('app-logo');
+  const lightLogoPath =
+    './src/images/clipmaker-logo-light.svg';
+  const darkLogoPath =
+    './src/images/clipmaker-logo-dark.svg';
+  const fallbackLightLogoPath =
+    './src/images/Clipmaker_logo_light.svg';
+  const fallbackDarkLogoPath =
+    './src/images/Clipmaker_logo_night.svg';
+
+  if (appLogo) {
+    appLogo.setAttribute(
+      'src',
+      isLightTheme ? lightLogoPath : darkLogoPath
+    );
+
+    appLogo.onerror = () => {
+      appLogo.setAttribute(
+        'src',
+        isLightTheme
+          ? fallbackLightLogoPath
+          : fallbackDarkLogoPath
+      );
+    };
+  }
+
   const themeToggle =
     document.getElementById('theme-toggle');
   const themeIcon =
