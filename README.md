@@ -54,6 +54,7 @@ Implementação da navegação híbrida na galeria para melhorar a experiência 
 - **Setas para Ações Internas**: no card focado, `←/→` alternam entre ações disponíveis (`Reproduzir`, `Deletar` ou `Restaurar`).
 - **Ativação por Teclado**: `Enter` e `Espaço` executam a ação interna selecionada.
 - **Navegação Vertical da Lista**: `↑/↓`, `Home` e `End` movem o foco entre cards com previsibilidade.
+- **Ignora Cards Deletados no Roving**: a navegação por setas/tabindex agora percorre apenas cards ativos, excluindo itens com status desativado (`.disabled-card`).
 - **Fallback para Lista Vazia**: se não houver cards, o fluxo padrão de foco da página continua sem erros.
 - **Feedback Visual de Teclado**: destaque explícito para card focado e ação selecionada por setas.
 

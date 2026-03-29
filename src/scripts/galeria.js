@@ -23,7 +23,19 @@ const galeriaApp = {
 
     return Array.from(
       container.querySelectorAll('.cut-card')
-    );
+    ).filter((card) => {
+      const cardDesativado =
+        card.classList.contains('disabled-card');
+
+      const botaoAssistir = card.querySelector(
+        '.btn-card[data-action="assistir"]'
+      );
+
+      const cardSemAcaoAssistirAtiva =
+        !!botaoAssistir && botaoAssistir.disabled;
+
+      return !cardDesativado && !cardSemAcaoAssistirAtiva;
+    });
   },
 
   obterAcoesDisponiveisDoCard: function (card) {
@@ -471,7 +483,11 @@ const galeriaApp = {
 
     const lista = await this.carregarTodaGaleria();
     this.renderizarNoGrid(lista);
-    this.focarCardPorId(id);
+
+    const conseguiuFocarCard = this.focarCardPorId(id);
+    if (!conseguiuFocarCard) {
+      this.focarCardPorIndice(this.focoCardIndex);
+    }
   },
 
   reproduzirDaGaleria: function (id) {
