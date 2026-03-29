@@ -25,6 +25,16 @@ Refatoração profunda na lógica de persistência e interface para garantir um 
 - **Gestão de Vídeos Desativados**: O player é resetado ao deletar um vídeo em reprodução, e cards `disabled` bloqueiam a função "Assistir".
 - **Deduplicação de Dados**: Motor que impede salvamentos duplicados comparando URLs e assinaturas de conteúdo.
 
+### ✅ Entrega Atual (Refino Visual no Tema Claro — Bordas + Foco + Micro-foco) — 2026-03-29
+
+Ajuste estético e de acessibilidade aplicado para deixar o modo claro mais elegante e com estados de teclado inequivocamente visíveis:
+
+- **Bordas Suaves nos Blocos Principais**: arredondamento consistente no `header`, área de vídeo e cards da galeria para reduzir a sensação de layout rígido.
+- **Foco Duplo Estrito no Light Theme**: reforço global de `:focus-visible` com `outline` Papaya + anel externo escuro (`box-shadow`) para máxima percepção visual em navegação por teclado.
+- **Proteção contra Conflito de Estilos de Foco**: regra no escopo de `html.light-theme` com prioridade para preservar acessibilidade mesmo diante de estilos locais concorrentes.
+- **Micro-foco da Galeria com Alto Contraste**: `.is-key-selected` no tema claro passou a usar fundo Teal escuro, texto branco e contorno destacado, deixando explícito qual ação interna do card está ativa.
+- **Consistência em Estado Desativado**: variação visual equivalente para cards desabilitados, mantendo legibilidade e previsibilidade durante navegação por setas.
+
 ### ✅ Última Entrega (A11Y no Aside) — 2026-03-28
 
 Implementação completa dos três toggles de acessibilidade do `aside`, com foco em feedback visível, leitura assistiva e persistência:

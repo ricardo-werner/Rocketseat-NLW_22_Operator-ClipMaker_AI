@@ -57,6 +57,12 @@ html.light-theme
   box-shadow: 0 0 0 6px #0f172a !important;
 }
 
+html.light-theme :focus-visible {
+  outline: 3px solid #ff8700 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 6px #0f172a !important;
+}
+
 .skip-link {
   position: absolute;
   top: 0;
