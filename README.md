@@ -98,6 +98,7 @@ Ajuste de layout para manter o menu lateral previsível no scroll e evitar deslo
 - **Mobile**: `aside` deixa de usar sticky (`position: static`) e o layout passa a empilhar (`aside` acima do conteúdo principal), evitando efeito de “subir” indevido.
 - **Robustez em container flex**: refinado alinhamento do `aside` para manter fixação correta durante a rolagem da página.
 - **Ajuste fino por breakpoint (`md` → `2xl`)**: offsets e altura máxima do sticky calibrados progressivamente para reduzir gaps e manter o topo visualmente consistente em diferentes larguras de tela.
+- **Sticky imediato no desktop (`md+`)**: offset do `aside` alinhado à altura real do header para eliminar o movimento vertical antes de “grudar” no início da rolagem.
 
 ---
 
