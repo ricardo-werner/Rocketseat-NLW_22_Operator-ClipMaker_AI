@@ -25,6 +25,15 @@ Refatoração profunda na lógica de persistência e interface para garantir um 
 - **Gestão de Vídeos Desativados**: O player é resetado ao deletar um vídeo em reprodução, e cards `disabled` bloqueiam a função "Assistir".
 - **Deduplicação de Dados**: Motor que impede salvamentos duplicados comparando URLs e assinaturas de conteúdo.
 
+### ✅ Entrega Atual (Alinhamento Estrutural do Logo com a Coluna Lateral) — 2026-03-29
+
+Refino de layout no topo para dar protagonismo ao logo e alinhar sua posição à divisória entre o `aside` e o conteúdo principal, sem regressão de responsividade:
+
+- **Variável única de coluna lateral**: largura do menu lateral consolidada em token global (`--layout-sidebar-width`) e reutilizada em `aside`, `main` e `header`.
+- **Header espelhando a coluna do layout**: em `md+`, o `header-content` aplica deslocamento horizontal com base na largura do `aside`, alinhando o início visual do bloco do logo à linha divisória lateral.
+- **Logo com escala fluida (`clamp`)**: aumento de destaque com dimensionamento proporcional em mobile e desktop, preservando aspecto (`width: auto` + `object-fit: contain`).
+- **Consistência entre breakpoints**: ajustes mantêm comportamento Mobile First e evitam hardcode duplicado da largura da lateral.
+
 ### ✅ Entrega Atual (Reescrita Consolidada do Header/Topbar — CSS Moderno + A11Y) — 2026-03-29
 
 Correção estrutural completa do Header para eliminar regressões visuais e tornar o topo da interface mais compacto, responsivo e consistente entre tema claro/escuro:
