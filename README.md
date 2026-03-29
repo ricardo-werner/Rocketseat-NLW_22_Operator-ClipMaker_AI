@@ -51,6 +51,12 @@ Correção estrutural completa do Header para eliminar regressões visuais e tor
   - `./src/images/clipmaker-logo-dark.svg` (tema escuro)
 - Compatibilidade adicional com nomes já presentes na pasta de imagens usando fallback automático de caminho.
 
+#### 🧩 Refino visual do Header (logo dominante no desktop) — 2026-03-29
+
+- Escopo responsivo aplicado em desktop (`@media (min-width: 768px)`) para ampliar o logotipo sem inflar excessivamente o topo.
+- `#app-logo` com dimensionamento imponente no desktop (`height: 100%`, `max-height: 80px`, `object-fit: contain` e respiro vertical via `padding`).
+- Reforço de legibilidade no tema claro com ajuste de contraste no logo (`filter: brightness(0.8)`) para manter leitura forte sobre fundo claro.
+
 ### ✅ Entrega Atual (Ajuste de Layout Final — Header + Aside Fixo md→2XL) — 2026-03-29
 
 Refino de estabilidade visual para manter a leitura da interface mais consistente durante a rolagem:
