@@ -6,52 +6,72 @@ const ACCESSIBILITY_STORAGE_KEYS = {
 
 const VISION_LEVELS = ['100', '110', '125'];
 
+const LOGO_PATHS = {
+  light: './src/images/Clipmaker_logo_light.png',
+  dark: './src/images/Clipmaker_logo_night.png',
+  fallback: {
+    light: './src/images/Clipmaker_logo_light.svg',
+    dark: './src/images/Clipmaker_logo_night.svg',
+  },
+};
+
+// 2. CACHING DE DOM (Buscamos os elementos apenas uma vez e reutilizamos as referências)
+const DOM = {
+  appLogo: document.getElementById('app-logo'),
+  themeToggle: document.getElementById('theme-toggle'),
+  themeIcon:
+    document
+      .getElementById('theme-toggle')
+      ?.querySelector('.icon') || null,
+  themeLabel: document.getElementById('theme-toggle-label'),
+  dislexiaToggle: document.getElementById(
+    'dislexia-toggle'
+  ),
+  dislexiaLabel: document.getElementById(
+    'dislexia-toggle-label'
+  ),
+  visionToggle: document.getElementById('vision-toggle'),
+  visionLabel: document.getElementById(
+    'vision-toggle-label'
+  ),
+  backBtn: document.getElementById('back-to-top'),
+  listaCortes:
+    document.getElementById('lista-cortes') ||
+    document.getElementById('lista-salvos') ||
+    document.getElementById('meus-cortes-container'),
+};
+
+// FUNÇÕES MAIS LIMPAS (Focadas apenas em aplicar a lógica)
+
 function applyTheme(isLightTheme) {
   document.documentElement.classList.toggle(
     'light-theme',
     isLightTheme
   );
 
-  const appLogo = document.getElementById('app-logo');
-  const lightLogoPath =
-    './src/images/clipmaker-logo-light.svg';
-  const darkLogoPath =
-    './src/images/clipmaker-logo-dark.svg';
-  const fallbackLightLogoPath =
-    './src/images/Clipmaker_logo_light.svg';
-  const fallbackDarkLogoPath =
-    './src/images/Clipmaker_logo_night.svg';
-
-  if (appLogo) {
-    appLogo.setAttribute(
-      'src',
-      isLightTheme ? lightLogoPath : darkLogoPath
-    );
-
-    appLogo.onerror = () => {
-      appLogo.setAttribute(
+  if (DOM.appLogo) {
+    DOM.appLogo.onerror = () => {
+      DOM.appLogo.onerror = null;
+      DOM.appLogo.setAttribute(
         'src',
         isLightTheme
-          ? fallbackLightLogoPath
-          : fallbackDarkLogoPath
+          ? LOGO_PATHS.fallback.light
+          : LOGO_PATHS.fallback.dark
       );
     };
+
+    DOM.appLogo.setAttribute(
+      'src',
+      isLightTheme ? LOGO_PATHS.light : LOGO_PATHS.dark
+    );
   }
 
-  const themeToggle =
-    document.getElementById('theme-toggle');
-  const themeIcon =
-    themeToggle?.querySelector('.icon') || null;
-  const themeLabel = document.getElementById(
-    'theme-toggle-label'
-  );
-
-  if (themeToggle) {
-    themeToggle.setAttribute(
+  if (DOM.themeToggle) {
+    DOM.themeToggle.setAttribute(
       'aria-pressed',
       String(isLightTheme)
     );
-    themeToggle.setAttribute(
+    DOM.themeToggle.setAttribute(
       'aria-label',
       isLightTheme
         ? 'Tema claro ativado. Clique para mudar para o tema escuro'
@@ -59,15 +79,17 @@ function applyTheme(isLightTheme) {
     );
   }
 
-  if (themeIcon) {
-    themeIcon.setAttribute(
+  //Simplificando a busca do ícone para evitar múltiplas buscas
+
+  if (DOM.themeIcon) {
+    DOM.themeIcon.setAttribute(
       'data-lucide',
       isLightTheme ? 'sun' : 'moon'
     );
   }
 
-  if (themeLabel) {
-    themeLabel.textContent = isLightTheme
+  if (DOM.themeLabel) {
+    DOM.themeLabel.textContent = isLightTheme
       ? 'Tema: Claro'
       : 'Tema: Escuro';
   }
@@ -83,19 +105,12 @@ function applyDyslexiaMode(isEnabled) {
     isEnabled
   );
 
-  const dislexiaToggle = document.getElementById(
-    'dislexia-toggle'
-  );
-  const dislexiaLabel = document.getElementById(
-    'dislexia-toggle-label'
-  );
-
-  if (dislexiaToggle) {
-    dislexiaToggle.setAttribute(
+  if (DOM.dislexiaToggle) {
+    DOM.dislexiaToggle.setAttribute(
       'aria-pressed',
       String(isEnabled)
     );
-    dislexiaToggle.setAttribute(
+    DOM.dislexiaToggle.setAttribute(
       'aria-label',
       isEnabled
         ? 'Dislexia ativada. Clique para desativar o modo de leitura para dislexia'
@@ -103,8 +118,8 @@ function applyDyslexiaMode(isEnabled) {
     );
   }
 
-  if (dislexiaLabel) {
-    dislexiaLabel.textContent = isEnabled
+  if (DOM.dislexiaLabel) {
+    DOM.dislexiaLabel.textContent = isEnabled
       ? 'Dislexia: ON'
       : 'Dislexia: OFF';
   }
@@ -121,26 +136,20 @@ function applyVisionLevel(level) {
     document.body.classList.add(`enhanced-vision-${level}`);
   }
 
-  const visionToggle =
-    document.getElementById('vision-toggle');
-  const visionLabel = document.getElementById(
-    'vision-toggle-label'
-  );
-
-  if (visionToggle) {
+  if (DOM.visionToggle) {
     const isEnhanced = level !== '100';
-    visionToggle.setAttribute(
+    DOM.visionToggle.setAttribute(
       'aria-pressed',
       String(isEnhanced)
     );
-    visionToggle.setAttribute(
+    DOM.visionToggle.setAttribute(
       'aria-label',
       `Escala de fonte atual ${level}%. Clique para alternar para o próximo nível`
     );
   }
 
-  if (visionLabel) {
-    visionLabel.textContent = `Fonte: ${level}%`;
+  if (DOM.visionLabel) {
+    DOM.visionLabel.textContent = `Fonte: ${level}%`;
   }
 }
 
@@ -157,28 +166,17 @@ function getSavedVisionLevel() {
 }
 
 function initializeAccessibilityToggles() {
-  const themeToggle =
-    document.getElementById('theme-toggle');
-  const dislexiaToggle = document.getElementById(
-    'dislexia-toggle'
-  );
-  const visionToggle =
-    document.getElementById('vision-toggle');
-
-  if (themeToggle) {
-    const savedTheme =
-      localStorage.getItem(
-        ACCESSIBILITY_STORAGE_KEYS.theme
-      ) || localStorage.getItem('theme');
-    const isLightTheme = savedTheme === 'light';
+  //Inicialização do Tema(Limpa, com apenas uma chave no LocalStorage)
+  if (DOM.themeToggle) {
+    const savedTheme = localStorage.getItem(
+      ACCESSIBILITY_STORAGE_KEYS.theme
+    );
+    //Definindo o tema claro como padrão caso a chave não exista ou seja inválida
+    const isLightTheme = savedTheme !== 'dark';
 
     applyTheme(isLightTheme);
-    localStorage.setItem(
-      ACCESSIBILITY_STORAGE_KEYS.theme,
-      isLightTheme ? 'light' : 'dark'
-    );
 
-    themeToggle.addEventListener('click', () => {
+    DOM.themeToggle.addEventListener('click', () => {
       const isLightThemeEnabled =
         !document.documentElement.classList.contains(
           'light-theme'
@@ -196,7 +194,7 @@ function initializeAccessibilityToggles() {
     });
   }
 
-  if (dislexiaToggle) {
+  if (DOM.dislexiaToggle) {
     const isDyslexiaEnabled =
       localStorage.getItem(
         ACCESSIBILITY_STORAGE_KEYS.dyslexia
@@ -204,7 +202,7 @@ function initializeAccessibilityToggles() {
 
     applyDyslexiaMode(isDyslexiaEnabled);
 
-    dislexiaToggle.addEventListener('click', () => {
+    DOM.dislexiaToggle.addEventListener('click', () => {
       const isEnabled =
         !document.body.classList.contains('dyslexia-mode');
 
@@ -216,11 +214,11 @@ function initializeAccessibilityToggles() {
     });
   }
 
-  if (visionToggle) {
+  if (DOM.visionToggle) {
     let currentLevel = getSavedVisionLevel();
     applyVisionLevel(currentLevel);
 
-    visionToggle.addEventListener('click', () => {
+    DOM.visionToggle.addEventListener('click', () => {
       const currentIndex =
         VISION_LEVELS.indexOf(currentLevel);
       const nextLevel =
@@ -236,41 +234,37 @@ function initializeAccessibilityToggles() {
       );
     });
   }
+
+  // Botão Flutuante de Voltar ao Topo
+  if (DOM.backBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300)
+        DOM.backBtn.classList.add('visible');
+      else DOM.backBtn.classList.remove('visible');
+    });
+
+    DOM.backBtn.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
+  }
+
+  // CRUD: Simulação de Deleção
+
+  if (DOM.listaCortes) {
+    DOM.listaCortes.addEventListener('click', (e) => {
+      const btnDelete = e.target.closest('.delete');
+      if (btnDelete) {
+        const card = btnDelete.closest('.cut-card');
+        if (!card) return;
+
+        card.style.opacity = '0';
+        setTimeout(() => card.remove(), 500);
+      }
+    });
+  }
 }
 
 document.addEventListener(
   'DOMContentLoaded',
   initializeAccessibilityToggles
 );
-
-// Botão Flutuante
-const backBtn = document.getElementById('back-to-top');
-if (backBtn) {
-  window.onscroll = () => {
-    if (window.scrollY > 300)
-      backBtn.classList.add('visible');
-    else backBtn.classList.remove('visible');
-  };
-
-  backBtn.onclick = () =>
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-// CRUD: Simulação de Deleção
-const listaCortes =
-  document.getElementById('lista-cortes') ||
-  document.getElementById('lista-salvos') ||
-  document.getElementById('meus-cortes-container');
-
-if (listaCortes) {
-  listaCortes.addEventListener('click', (e) => {
-    const btnDelete = e.target.closest('.delete');
-    if (btnDelete) {
-      const card = btnDelete.closest('.cut-card');
-      if (!card) return;
-
-      card.style.opacity = '0';
-      setTimeout(() => card.remove(), 500);
-    }
-  });
-}
