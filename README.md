@@ -25,6 +25,20 @@ Refatoração profunda na lógica de persistência e interface para garantir um 
 - **Gestão de Vídeos Desativados**: O player é resetado ao deletar um vídeo em reprodução, e cards `disabled` bloqueiam a função "Assistir".
 - **Deduplicação de Dados**: Motor que impede salvamentos duplicados comparando URLs e assinaturas de conteúdo.
 
+### ✅ Entrega Atual (Hardening de Inicialização + Fallback do Logo) — 2026-03-30
+
+Ajuste de robustez em `src/scripts/scripts.js` para evitar regressões de carregamento e garantir renderização consistente do logotipo:
+
+- **Inicialização centralizada em orquestrador**: criação de `initializeApp()` com fluxo explícito de setup (`tema`, `dislexia`, `visão` e interações gerais).
+- **Bootstrap correto no carregamento**: `DOMContentLoaded` agora registrado fora dos blocos condicionais, evitando cenário em que a inicialização não era disparada.
+- **Cache de DOM mais seguro**: leitura de `themeIcon` protegida com optional chaining (`?.`) para evitar quebra em páginas/estados sem `#theme-toggle`.
+- **Fallback do logo blindado**: `onerror` registrado antes de definir o `src` principal e com auto-desarme (`onerror = null`) para prevenir loop caso o fallback também falhe.
+- **Consistência dos assets por tema**:
+  - principal claro: `./src/images/Clipmaker_logo_light.png`
+  - principal escuro: `./src/images/Clipmaker_logo_night.png`
+  - fallback claro: `./src/images/Clipmaker_logo_light.svg`
+  - fallback escuro: `./src/images/Clipmaker_logo_night.svg`
+
 ### ✅ Entrega Atual (Alinhamento Estrutural do Logo com a Coluna Lateral) — 2026-03-29
 
 Refino de layout no topo para dar protagonismo ao logo e alinhar sua posição à divisória entre o `aside` e o conteúdo principal, sem regressão de responsividade:
@@ -54,11 +68,13 @@ Correção estrutural completa do Header para eliminar regressões visuais e tor
 #### 🖼️ Ajuste de logo responsivo por tema (swap dinâmico) — 2026-03-29
 
 - Elemento de logotipo no Header padronizado com `id="app-logo"` para controle programático.
-- Lógica de alternância de tema agora sincroniza o `src` do logo via operador ternário no script de tema.
+- Lógica de alternância de tema sincroniza o `src` do logo via estado do tema no script.
 - Caminhos principais aplicados no swap:
-  - `./src/images/clipmaker-logo-light.svg` (tema claro)
-  - `./src/images/clipmaker-logo-dark.svg` (tema escuro)
-- Compatibilidade adicional com nomes já presentes na pasta de imagens usando fallback automático de caminho.
+  - `./src/images/Clipmaker_logo_light.png` (tema claro)
+  - `./src/images/Clipmaker_logo_night.png` (tema escuro)
+- Caminhos de fallback automático em caso de erro de carregamento:
+  - `./src/images/Clipmaker_logo_light.svg` (tema claro)
+  - `./src/images/Clipmaker_logo_night.svg` (tema escuro)
 
 #### 🧩 Refino visual do Header (logo dominante no desktop) — 2026-03-29
 
