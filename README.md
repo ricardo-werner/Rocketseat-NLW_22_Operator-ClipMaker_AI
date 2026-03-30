@@ -34,12 +34,6 @@ Refino de layout no topo para dar protagonismo ao logo e alinhar sua posição �
 - **Logo com escala fluida (`clamp`)**: aumento de destaque com dimensionamento proporcional em mobile e desktop, preservando aspecto (`width: auto` + `object-fit: contain`).
 - **Consistência entre breakpoints**: ajustes mantêm comportamento Mobile First e evitam hardcode duplicado da largura da lateral.
 
-#### 🔧 Ajuste fino solicitado (logo mais à esquerda + mais destaque) — 2026-03-29
-
-- **Correção do deslocamento excessivo**: no breakpoint `@media (min-width: 768px)`, o `padding-left` do `header-content` foi simplificado para `var(--layout-sidebar-width)`, removendo o `gutter` extra que empurrava o logo além da divisória visual.
-- **Alinhamento visual preciso com a divisória**: o início do bloco de marca no header agora encosta no limite estrutural do `aside`, mantendo consistência com a malha principal.
-- **Logo com presença reforçada**: escala recalibrada com `width: clamp(...)` (mobile e desktop) e `height: auto`, preservando proporção e elevando o destaque sem distorção.
-
 ### ✅ Entrega Atual (Reescrita Consolidada do Header/Topbar — CSS Moderno + A11Y) — 2026-03-29
 
 Correção estrutural completa do Header para eliminar regressões visuais e tornar o topo da interface mais compacto, responsivo e consistente entre tema claro/escuro:
