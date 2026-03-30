@@ -1,3 +1,4 @@
+// 1. CONSTANTES E DADOS ESTÁTICOS
 const ACCESSIBILITY_STORAGE_KEYS = {
   theme: 'clipmaker.theme',
   dyslexia: 'clipmaker.dyslexia',
@@ -15,7 +16,7 @@ const LOGO_PATHS = {
   },
 };
 
-// 2. CACHING DE DOM (Buscamos os elementos apenas uma vez e reutilizamos as referências)
+// 2. CACHE DO DOM
 const DOM = {
   appLogo: document.getElementById('app-logo'),
   themeToggle: document.getElementById('theme-toggle'),
@@ -41,7 +42,7 @@ const DOM = {
     document.getElementById('meus-cortes-container'),
 };
 
-// FUNÇÕES MAIS LIMPAS (Focadas apenas em aplicar a lógica)
+// 3. FUNÇÕES DE ACESSIBILIDADE E TEMA
 
 function applyTheme(isLightTheme) {
   document.documentElement.classList.toggle(
@@ -59,7 +60,6 @@ function applyTheme(isLightTheme) {
           : LOGO_PATHS.fallback.dark
       );
     };
-
     DOM.appLogo.setAttribute(
       'src',
       isLightTheme ? LOGO_PATHS.light : LOGO_PATHS.dark
@@ -78,8 +78,6 @@ function applyTheme(isLightTheme) {
         : 'Tema escuro ativado. Clique para mudar para o tema claro'
     );
   }
-
-  //Simplificando a busca do ícone para evitar múltiplas buscas
 
   if (DOM.themeIcon) {
     DOM.themeIcon.setAttribute(
@@ -157,85 +155,87 @@ function getSavedVisionLevel() {
   const savedLevel = localStorage.getItem(
     ACCESSIBILITY_STORAGE_KEYS.vision
   );
-
   if (!savedLevel || !VISION_LEVELS.includes(savedLevel)) {
     return '100';
   }
-
   return savedLevel;
 }
 
-function initializeAccessibilityToggles() {
-  //Inicialização do Tema(Limpa, com apenas uma chave no LocalStorage)
-  if (DOM.themeToggle) {
-    const savedTheme = localStorage.getItem(
-      ACCESSIBILITY_STORAGE_KEYS.theme
+// 4. FUNÇÕES DE INICIALIZAÇÃO E EVENTOS
+
+function initializeThemeToggle() {
+  if (!DOM.themeToggle) return;
+
+  const savedTheme = localStorage.getItem(
+    ACCESSIBILITY_STORAGE_KEYS.theme
+  );
+  // Se não existir no LocalStorage, assumimos claro e já gravamos isso para garantir a consistência
+  const isLightTheme = savedTheme !== 'dark';
+
+  applyTheme(isLightTheme);
+  localStorage.setItem(
+    ACCESSIBILITY_STORAGE_KEYS.theme,
+    isLightTheme ? 'light' : 'dark'
+  );
+
+  DOM.themeToggle.addEventListener('click', () => {
+    const isLightThemeEnabled =
+      !document.documentElement.classList.contains(
+        'light-theme'
+      );
+    applyTheme(isLightThemeEnabled);
+    localStorage.setItem(
+      ACCESSIBILITY_STORAGE_KEYS.theme,
+      isLightThemeEnabled ? 'light' : 'dark'
     );
-    //Definindo o tema claro como padrão caso a chave não exista ou seja inválida
-    const isLightTheme = savedTheme !== 'dark';
+  });
+}
 
-    applyTheme(isLightTheme);
+function initializeDyslexiaToggle() {
+  if (!DOM.dislexiaToggle) return;
 
-    DOM.themeToggle.addEventListener('click', () => {
-      const isLightThemeEnabled =
-        !document.documentElement.classList.contains(
-          'light-theme'
-        );
+  const isDyslexiaEnabled =
+    localStorage.getItem(
+      ACCESSIBILITY_STORAGE_KEYS.dyslexia
+    ) === 'true';
+  applyDyslexiaMode(isDyslexiaEnabled);
 
-      applyTheme(isLightThemeEnabled);
-      localStorage.setItem(
-        ACCESSIBILITY_STORAGE_KEYS.theme,
-        isLightThemeEnabled ? 'light' : 'dark'
-      );
-      localStorage.setItem(
-        'theme',
-        isLightThemeEnabled ? 'light' : 'dark'
-      );
-    });
-  }
+  DOM.dislexiaToggle.addEventListener('click', () => {
+    const isEnabled =
+      !document.body.classList.contains('dyslexia-mode');
+    applyDyslexiaMode(isEnabled);
+    localStorage.setItem(
+      ACCESSIBILITY_STORAGE_KEYS.dyslexia,
+      String(isEnabled)
+    );
+  });
+}
 
-  if (DOM.dislexiaToggle) {
-    const isDyslexiaEnabled =
-      localStorage.getItem(
-        ACCESSIBILITY_STORAGE_KEYS.dyslexia
-      ) === 'true';
+function initializeVisionToggle() {
+  if (!DOM.visionToggle) return;
 
-    applyDyslexiaMode(isDyslexiaEnabled);
+  let currentLevel = getSavedVisionLevel();
+  applyVisionLevel(currentLevel);
 
-    DOM.dislexiaToggle.addEventListener('click', () => {
-      const isEnabled =
-        !document.body.classList.contains('dyslexia-mode');
+  DOM.visionToggle.addEventListener('click', () => {
+    const currentIndex =
+      VISION_LEVELS.indexOf(currentLevel);
+    const nextLevel =
+      VISION_LEVELS[
+        (currentIndex + 1) % VISION_LEVELS.length
+      ];
 
-      applyDyslexiaMode(isEnabled);
-      localStorage.setItem(
-        ACCESSIBILITY_STORAGE_KEYS.dyslexia,
-        String(isEnabled)
-      );
-    });
-  }
-
-  if (DOM.visionToggle) {
-    let currentLevel = getSavedVisionLevel();
+    currentLevel = nextLevel;
     applyVisionLevel(currentLevel);
+    localStorage.setItem(
+      ACCESSIBILITY_STORAGE_KEYS.vision,
+      currentLevel
+    );
+  });
+}
 
-    DOM.visionToggle.addEventListener('click', () => {
-      const currentIndex =
-        VISION_LEVELS.indexOf(currentLevel);
-      const nextLevel =
-        VISION_LEVELS[
-          (currentIndex + 1) % VISION_LEVELS.length
-        ];
-
-      currentLevel = nextLevel;
-      applyVisionLevel(currentLevel);
-      localStorage.setItem(
-        ACCESSIBILITY_STORAGE_KEYS.vision,
-        currentLevel
-      );
-    });
-  }
-
-  // Botão Flutuante de Voltar ao Topo
+function initializeUIInteractions() {
+  // Botão Flutuante
   if (DOM.backBtn) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 300)
@@ -248,15 +248,13 @@ function initializeAccessibilityToggles() {
     );
   }
 
-  // CRUD: Simulação de Deleção
-
+  // CRUD: Deleção
   if (DOM.listaCortes) {
     DOM.listaCortes.addEventListener('click', (e) => {
       const btnDelete = e.target.closest('.delete');
       if (btnDelete) {
         const card = btnDelete.closest('.cut-card');
         if (!card) return;
-
         card.style.opacity = '0';
         setTimeout(() => card.remove(), 500);
       }
@@ -264,7 +262,15 @@ function initializeAccessibilityToggles() {
   }
 }
 
+// 5. ORQUESTRADOR PRINCIPAL
+function initializeApp() {
+  initializeThemeToggle();
+  initializeDyslexiaToggle();
+  initializeVisionToggle();
+  initializeUIInteractions();
+}
+
 document.addEventListener(
   'DOMContentLoaded',
-  initializeAccessibilityToggles
+  initializeApp
 );
