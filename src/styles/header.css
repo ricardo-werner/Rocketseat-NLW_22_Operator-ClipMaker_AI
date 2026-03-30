@@ -89,7 +89,7 @@ html.light-theme .main-header :is(a, button):focus-visible {
   .main-header .header-content {
     min-height: clamp(7.2rem, 8vw, 8.8rem);
     padding-left: calc(
-      var(--layout-sidebar-width) +
+      var(--layout-sidebar-width) -
         var(--layout-header-gutter-inline)
     );
   }
