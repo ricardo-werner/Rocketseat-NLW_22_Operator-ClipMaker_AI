@@ -80,20 +80,10 @@ Implementações-chave já aplicadas:
   </tr>
 </table>
 
-<table align="center">
-  <tr>
-    <td align="center">
-      <a href="https://github.com/user-attachments/assets/5a84416f-872a-46ed-acde-1bec100c7c23" target="_blank" rel="noopener noreferrer"><strong>▶️ Ver vídeo 1</strong></a>
-      <br />
-      <sub>Demonstração do fluxo principal</sub>
-    </td>
-    <td align="center">
-      <a href="https://github.com/user-attachments/assets/c7ba816e-fdda-4b20-802a-3994d413f5e3" target="_blank" rel="noopener noreferrer"><strong>▶️ Ver vídeo 2</strong></a>
-      <br />
-      <sub>Demonstração complementar</sub>
-    </td>
-  </tr>
-</table>
+| 🎬 Demonstração 1                                                                                                                                                                                                                | 🎬 Demonstração 2                                                                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![Ver vídeo 1](https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Ver%20v%C3%ADdeo%201-111827?style=for-the-badge&logo=github&logoColor=white)](https://github.com/user-attachments/assets/5a84416f-872a-46ed-acde-1bec100c7c23) | [![Ver vídeo 2](https://img.shields.io/badge/%E2%96%B6%EF%B8%8F%20Ver%20v%C3%ADdeo%202-1f2937?style=for-the-badge&logo=github&logoColor=white)](https://github.com/user-attachments/assets/c7ba816e-fdda-4b20-802a-3994d413f5e3) |
+| Fluxo principal                                                                                                                                                                                                                  | Fluxo complementar                                                                                                                                                                                                               |
 
 ---
 
@@ -130,6 +120,7 @@ cd ClipMaker_AI
 - Conversão de URLs brutas de vídeo para links compactos clicáveis
 - Organização dos links em duas colunas (lado a lado) para leitura rápida
 - Remoção de prévias grandes na seção de vídeos para reduzir ruído visual
+- Versão alternativa em Markdown puro com botões estilo badge
 
 ---
 
