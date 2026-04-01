@@ -80,12 +80,20 @@ Implementações-chave já aplicadas:
   </tr>
 </table>
 
-<p align="center">
-  https://github.com/user-attachments/assets/5a84416f-872a-46ed-acde-1bec100c7c23
-
-https://github.com/user-attachments/assets/c7ba816e-fdda-4b20-802a-3994d413f5e3
-
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="https://github.com/user-attachments/assets/5a84416f-872a-46ed-acde-1bec100c7c23" target="_blank" rel="noopener noreferrer"><strong>▶️ Ver vídeo 1</strong></a>
+      <br />
+      <sub>Demonstração do fluxo principal</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/user-attachments/assets/c7ba816e-fdda-4b20-802a-3994d413f5e3" target="_blank" rel="noopener noreferrer"><strong>▶️ Ver vídeo 2</strong></a>
+      <br />
+      <sub>Demonstração complementar</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -117,19 +125,11 @@ cd ClipMaker_AI
 
 ## 📌 Entrega mais recente
 
-### 2026-03-30 — Hardening de inicialização + fallback de logo
+### 2026-03-31 — Refino da seção de mídia no README
 
-- Orquestração de boot com `initializeApp()`
-- Correção de ordem de inicialização no `DOMContentLoaded`
-- Proteção de leitura de DOM para `themeIcon`
-- Fallback robusto do logo por tema com auto-desarme do `onerror`
-
-Assets do logo:
-
-- claro: `./src/images/Clipmaker_logo_light.png`
-- escuro: `./src/images/Clipmaker_logo_night.png`
-- fallback claro: `./src/images/Clipmaker_logo_light.svg`
-- fallback escuro: `./src/images/Clipmaker_logo_night.svg`
+- Conversão de URLs brutas de vídeo para links compactos clicáveis
+- Organização dos links em duas colunas (lado a lado) para leitura rápida
+- Remoção de prévias grandes na seção de vídeos para reduzir ruído visual
 
 ---
 
