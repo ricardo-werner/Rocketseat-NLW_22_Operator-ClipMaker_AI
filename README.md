@@ -76,7 +76,7 @@ Implementações-chave já aplicadas:
     <td align="center"><img width="300" src="./src/to_readme/ClipMaker_110.png" alt="Seção de escala de fonte 110%" /></td>
   </tr>
   <tr>
-    <td colspan="2" align="center"><img width="300" src="./src/to_readme/ClipMaker_125.png" alt="Seção de escala de fonte 125%" /></td>
+    <td colspan="2" align="center"><img width="180" src="./src/to_readme/ClipMaker_125.png" alt="Seção de escala de fonte 125%" /></td>
   </tr>
 </table>
 
