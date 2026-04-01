@@ -66,26 +66,28 @@ Implementações-chave já aplicadas:
 
 ## 🖼️ Prévia da interface
 
-<p align="center">
-  <img width="480" src="./src/to_readme/ClipMaker_light.png" alt="Tela inicial clara do ClipMaker AI" />
-  <img width="480" src="./src/to_readme/ClipMaker_dark.png" alt="Tela inicial escura do ClipMaker AI" />
-</p>
-
-<p align="center">
-  <img width="480" src="./src/to_readme/ClipMaker_dislexia.png" alt="Seção de inclusão dislexia" />
-  <img width="480" src="./src/to_readme/ClipMaker_110.png" alt="Seção de escala de fonte 110%" />
-  <img width="480" src="./src/to_readme/ClipMaker_125.png" alt="Seção de escala de fonte 125%" />
-</p>
+<table align="center">
+  <tr>
+    <td align="center"><img width="360" src="./src/to_readme/ClipMaker_light.png" alt="Tela inicial clara do ClipMaker AI" /></td>
+    <td align="center"><img width="360" src="./src/to_readme/ClipMaker_dark.png" alt="Tela inicial escura do ClipMaker AI" /></td>
+  </tr>
+  <tr>
+    <td align="center"><img width="300" src="./src/to_readme/ClipMaker_dislexia.png" alt="Seção de inclusão dislexia" /></td>
+    <td align="center"><img width="300" src="./src/to_readme/ClipMaker_110.png" alt="Seção de escala de fonte 110%" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><img width="300" src="./src/to_readme/ClipMaker_125.png" alt="Seção de escala de fonte 125%" /></td>
+  </tr>
+</table>
 
 <p align="center">
   https://github.com/user-attachments/assets/5a84416f-872a-46ed-acde-1bec100c7c23
 
-  https://github.com/user-attachments/assets/c7ba816e-fdda-4b20-802a-3994d413f5e3
-
+https://github.com/user-attachments/assets/c7ba816e-fdda-4b20-802a-3994d413f5e3
 
 </p>
 
----  
+---
 
 ## 🧪 Como executar localmente
 
