@@ -78,10 +78,14 @@ Implementações-chave já aplicadas:
 </p>
 
 <p align="center">
-  
+  https://github.com/user-attachments/assets/5a84416f-872a-46ed-acde-1bec100c7c23
+
+  https://github.com/user-attachments/assets/c7ba816e-fdda-4b20-802a-3994d413f5e3
+
+
 </p>
 
----
+---  
 
 ## 🧪 Como executar localmente
 
