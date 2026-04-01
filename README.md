@@ -67,13 +67,18 @@ Implementações-chave já aplicadas:
 ## 🖼️ Prévia da interface
 
 <p align="center">
-  <img width="480" src="./src/to_readme/tela_inicial.PNG" alt="Tela inicial do ClipMaker AI" />
-  <img width="480" src="./src/to_readme/tela_inicial_tab.PNG" alt="Navegação por teclado no ClipMaker AI" />
+  <img width="480" src="./src/to_readme/ClipMaker_light.png" alt="Tela inicial clara do ClipMaker AI" />
+  <img width="480" src="./src/to_readme/ClipMaker_dark.png" alt="Tela inicial escura do ClipMaker AI" />
 </p>
 
 <p align="center">
-  <img width="480" src="./src/to_readme/tela_vlibras.PNG" alt="Seção de inclusão no projeto" />
-  <img width="480" src="./src/to_readme/tela_4_pilares.PNG" alt="Pilares de acessibilidade" />
+  <img width="480" src="./src/to_readme/ClipMaker_dislexia.png" alt="Seção de inclusão dislexia" />
+  <img width="480" src="./src/to_readme/ClipMaker_110.png" alt="Seção de escala de fonte 110%" />
+  <img width="480" src="./src/to_readme/ClipMaker_125.png" alt="Seção de escala de fonte 125%" />
+</p>
+
+<p align="center">
+  
 </p>
 
 ---
